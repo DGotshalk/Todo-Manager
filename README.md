@@ -1,12 +1,21 @@
 # Todo-Manger
-A todo manager written with qt to help me focus and organize
+A planner written in C++ and Qt, designed to help users focus and organize. 
 
-##Things to finish:
-	-	Ability to change daily list
-	-	Write Daily lists in advance
-	-	Weekly goals
-	-	Overarching goals
-	-	Daily Task Rollback
-	-	Percentage tasks completed
-	-	Better layout
-	-	Dark colors
+## Libarary Requirements 
+Using this program requires the following be installed:
+	- C++17 (or whatever version you used)
+	- Qt5 (or whatever version you used)
+	
+## Building and using
+This program needs to be built before it can be run, build using \\
+`Whatever you run to build the program` \\
+
+## In development:
+	- Ability to change daily list
+	- Write Daily lists in advance
+	- Weekly goals
+	- Overarching goals
+	- Daily Task Rollback
+	- Percentage tasks completed
+	- Layout tweaks
+	- Colorscheme adjustments
