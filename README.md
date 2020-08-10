@@ -9,6 +9,8 @@ Using this program requires the following be installed:
 ## Building and using
 This program needs to be built before it can be run, build using: </br>
 `Whatever you run to build the program` </br>
+After building the program can be run with </br>
+`However you run the program`
 
 ## In development:
 * Ability to change daily list
