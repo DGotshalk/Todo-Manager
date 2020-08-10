@@ -5,7 +5,7 @@ A planner written in C++ and Qt, designed to help users focus and organize.
 Using this program requires the following be installed:
 * C++17
 * g++
-* Qt5
+* Qt 5.15
 
 ### Qt Requirements
 These are items required by Qt, by Linux distro style </br>
@@ -20,6 +20,9 @@ For .rpm based systems such as CentOS or Fedora:
 For openSUSE:
 * devel_basis
 * pattern 
+
+### Installing Qt
+If Qt is not installed, it can be found [here](https://doc.qt.io/qt-5/gettingstarted.html) </br>
 
 ## Building and using
 This program needs to be built before it can be run, navigate to the ToDo folder and
