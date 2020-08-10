@@ -29,10 +29,10 @@ After building the program can be run with </br>
 
 ## In development:
 * Ability to change daily list
-* Write Daily lists in advance
-* Weekly goals
-* Overarching goals
-* Daily Task Rollback
-* Percentage tasks completed
-* Layout tweaks
 * Colorscheme adjustments
+* Daily Task Rollback
+* Layout tweaks
+* Overarching goals
+* Percentage tasks completed
+* Weekly goals
+* Write Daily lists in advance
