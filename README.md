@@ -3,9 +3,24 @@ A planner written in C++ and Qt, designed to help users focus and organize.
 
 ## Libarary Requirements 
 Using this program requires the following be installed:
-* C++17 (or whatever version you used)
-* Qt5 (or whatever version you used)
-	
+* C++17
+* g++
+* Qt
+
+### Qt Requirements
+These are items required by Qt, by Linux distro style </br>
+For .deb based systems such Debian or Ubuntu:
+* build-essential 
+* libgl1-mesa-dev
+
+For .rpm based systems such as CentOS or Fedora:
+* 'C Development Tools and Libraries' (install with yum groupinstall)
+* mesa-libGL-devel
+
+For openSUSE:
+* devel_basis
+* pattern 
+
 ## Building and using
 This program needs to be built before it can be run, build using: </br>
 `Whatever you run to build the program` </br>
