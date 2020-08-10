@@ -12,7 +12,7 @@ class Daily_items : public QListWidget
     QListWidget* mylist;
     Q_OBJECT
 public:
-    explicit Daily_items(QListWidget *parent = nullptr): widgetlist{parent} {}
+    explicit Daily_items(QListWidget *parent = nullptr): mylist{parent} {}
     void push_back(QString detail);
     bool check_repeat(QString name);
     bool isempty();
