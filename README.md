@@ -5,7 +5,7 @@ A planner written in C++ and Qt, designed to help users focus and organize.
 Using this program requires the following be installed:
 * C++17
 * g++
-* Qt
+* Qt5
 
 ### Qt Requirements
 These are items required by Qt, by Linux distro style </br>
