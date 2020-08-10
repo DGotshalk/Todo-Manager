@@ -24,6 +24,29 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="Dailylabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>307</y>
+      <width>241</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Daily Tasks</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="daily_items">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>330</y>
+      <width>291</width>
+      <height>191</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

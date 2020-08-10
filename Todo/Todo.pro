@@ -27,11 +27,11 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    dailyitems.cpp
+    daily_items.cpp
 
 HEADERS += \
         mainwindow.h \
-    dailyitems.h
+    daily_items.h
 
 FORMS += \
         mainwindow.ui
