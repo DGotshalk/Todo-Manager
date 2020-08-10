@@ -22,10 +22,16 @@ For openSUSE:
 * pattern 
 
 ## Building and using
-This program needs to be built before it can be run, build using: </br>
-`Whatever you run to build the program` </br>
+This program needs to be built before it can be run, navigate to the ToDo folder and
+build using: </br>
+`qmake Todo.pro` </br>
+
+This will create a make file, which can be made using: </br>
+`make`
+
 After building the program can be run with </br>
-`However you run the program`
+`./Todo` </br>
+on *NIX based machines such as Linux or Mac OSX
 
 ## In development:
 * Ability to change daily list
