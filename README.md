@@ -7,8 +7,8 @@ Using this program requires the following be installed:
 	- Qt5 (or whatever version you used)
 	
 ## Building and using
-This program needs to be built before it can be run, build using \\
-`Whatever you run to build the program` \\
+This program needs to be built before it can be run, build using: </br>
+`Whatever you run to build the program` </br>
 
 ## In development:
 	- Ability to change daily list
