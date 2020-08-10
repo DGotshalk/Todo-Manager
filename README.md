@@ -1,4 +1,4 @@
-# Todo-Manger
+# Todo-Manager
 A planner written in C++ and Qt, designed to help users focus and organize. 
 
 ## Libarary Requirements 
