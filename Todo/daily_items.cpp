@@ -1,16 +1,16 @@
 #include "daily_items.h"
 #include <algorithm>
-
+#include <QCheckBox>
 bool Daily_items::isempty(){
-    if (mylist.size() == 0){
+    if (mylist->count() == 0){
         return true;
     }
     return false;
 };
 
 bool Daily_items::check_repeat(QString name){
-    for (int i = 0; i < mylist.size(); ++i){
-        if (mylist[i] == name){
+    for (int i = 0; i < mylist->count(); ++i){
+        if (mylist->item(i)->text() == name){
             return false;
         }
     }
@@ -19,7 +19,9 @@ bool Daily_items::check_repeat(QString name){
 
 void Daily_items::push_back(QString details){
     if (check_repeat(details)&& isempty()){
-        mylist.push_back(details);
-        widgetlist->addItem(details);
+        QListWidgetItem* newitem = new QListWidgetItem;
+        mylist->addItem(newitem);
+        newitem->setFlags(Qt::ItemIsUserCheckable);
+        mylist->setItemWidget(newitem, new QCheckBox(details));
     }
 };
