@@ -9,8 +9,7 @@
 
 class Daily_items : public QListWidget
 {
-    QVector<QString> mylist;
-    QListWidget* widgetlist;
+    QListWidget* mylist;
     Q_OBJECT
 public:
     explicit Daily_items(QListWidget *parent = nullptr): widgetlist{parent} {}
