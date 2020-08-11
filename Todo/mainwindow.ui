@@ -29,7 +29,7 @@
      <rect>
       <x>190</x>
       <y>310</y>
-      <width>241</width>
+      <width>91</width>
       <height>21</height>
      </rect>
     </property>
@@ -37,20 +37,40 @@
      <string>Daily Tasks</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="daily_items">
+   <widget class="Daily_items" name="dailylistWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>330</y>
       <width>491</width>
-      <height>371</height>
+      <height>121</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="editlistButton">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>450</y>
+      <width>96</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edit List</string>
     </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Daily_items</class>
+   <extends>QListWidget</extends>
+   <header location="global">daily_items.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

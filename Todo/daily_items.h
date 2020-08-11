@@ -6,16 +6,20 @@
 #include <QVector>
 #include <QString>
 #include <iostream>
+#include <QDate>
 
 class Daily_items : public QListWidget
 {
-    QListWidget* mylist;
+    QDate day;
     Q_OBJECT
+
 public:
-    explicit Daily_items(QListWidget *parent = nullptr): mylist{parent} {}
+    explicit Daily_items(QWidget *parent = nullptr): QListWidget(parent) {}
     void push_back(QString detail);
     bool check_repeat(QString name);
     bool isempty();
+    QDate getdate(){ return day;}
+    void Load(const Daily_items& list);
 signals:
 
 public slots:

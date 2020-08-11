@@ -2,26 +2,44 @@
 #include <algorithm>
 #include <QCheckBox>
 bool Daily_items::isempty(){
-    if (mylist->count() == 0){
+    if (this->count() == 0){
         return true;
     }
     return false;
 };
 
 bool Daily_items::check_repeat(QString name){
-    for (int i = 0; i < mylist->count(); ++i){
-        if (mylist->item(i)->text() == name){
+    if(isempty()){
+        return true;
+    }
+    else{
+    for (int i = 0; i < this->count(); ++i){
+        if (this->item(i)->text() == name){
             return false;
         }
     }
         return true;
+    }
 };
 
 void Daily_items::push_back(QString details){
-    if (check_repeat(details)&& isempty()){
-        QListWidgetItem* newitem = new QListWidgetItem;
-        mylist->addItem(newitem);
+    if (check_repeat(details)){
+
+        QListWidgetItem* newitem = new QListWidgetItem(details);
+        this->addItem(newitem);
         newitem->setFlags(Qt::ItemIsUserCheckable);
-        mylist->setItemWidget(newitem, new QCheckBox(details));
+        this->setItemWidget(newitem, new QCheckBox(details));
     }
 };
+
+void Daily_items::Load(const Daily_items &list){
+    this->clear();
+    for (int i =0; i < list.count(); ++i){
+
+        QListWidgetItem* newitem = new QListWidgetItem;
+        this->addItem(newitem);
+        newitem->setFlags(Qt::ItemIsUserCheckable);
+        this->setItemWidget(newitem, new QCheckBox(list.item(i)->text()));
+
+    }
+}
