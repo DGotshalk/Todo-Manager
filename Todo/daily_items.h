@@ -10,6 +10,7 @@
 
 class Daily_items : public QListWidget
 {
+    Daily_items *cur_parent;
     QDate day;
     Q_OBJECT
 

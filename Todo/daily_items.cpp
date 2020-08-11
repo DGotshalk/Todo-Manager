@@ -28,12 +28,12 @@ void Daily_items::push_back(QString details){
         QListWidgetItem* newitem = new QListWidgetItem(details);
         this->addItem(newitem);
         newitem->setFlags(Qt::ItemIsUserCheckable);
-        this->setItemWidget(newitem, new QCheckBox(details));
     }
 };
 
-void Daily_items::Load(const Daily_items &list){
+void Daily_items::Load(Daily_items const &list){
     this->clear();
+    cur_parent = &list;
     for (int i =0; i < list.count(); ++i){
 
         QListWidgetItem* newitem = new QListWidgetItem;
