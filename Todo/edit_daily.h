@@ -13,7 +13,10 @@ class Edit_daily : public QDialog
 
 public:
     explicit Edit_daily(QWidget *parent = nullptr);
-    ~Edit_daily();
+	void Load_listwidget();
+	void add_data();
+	void remove_data();
+	~Edit_daily();
 
 private:
     Ui::Edit_daily *ui;
