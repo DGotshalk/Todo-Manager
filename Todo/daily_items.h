@@ -11,7 +11,8 @@
 class Daily_items : public QListWidget
 {
     const Daily_items* cur_parent;
-    QDate day;
+
+    QDate date;
     Q_OBJECT
 
 public:
@@ -19,7 +20,7 @@ public:
     void push_back(QString detail);
     bool check_repeat(QString name);
     bool isempty();
-    QDate getdate(){ return day;}
+    QDate getdate(){ return date;}
     void Load(const Daily_items& list);
 signals:
 
