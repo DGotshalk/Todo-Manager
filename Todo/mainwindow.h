@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "daily_items.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,10 +18,11 @@ public:
 
 private slots: 
 
-    void OpenEditDialogue();
-
+    void AddItemDaily();
+    void RemoveItemDaily();
 private:
     Ui::MainWindow *ui;
+    Daily_items *current_day;
 };
 
 #endif // MAINWINDOW_H

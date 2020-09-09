@@ -7,12 +7,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    Daily_items newitem;
-    newitem.push_back("memes");
-    newitem.push_back("i cant believe its not butter");
-    ui->dailylistWidget->Load(newitem);
-    QObject::connect(ui->editlistButton,SIGNAL(clicked()),
-            this, SLOT(OpenEditDialogue()));
+
+    current_day = new Daily_items;
+    current_day->push_back("memes");
+    current_day->push_back("i cant believe its not butter");
+    ui->dailylistWidget->Load(*current_day);
+    QObject::connect(ui->addtolistButton,SIGNAL(clicked()),this, SLOT(AddItemDaily()));
+
+    QObject::connect(ui->removefromlistButton,SIGNAL(clicked()),this, SLOT(RemoveItemDaily()));
 }
 MainWindow::~MainWindow()
 {
@@ -20,7 +22,14 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::OpenEditDialogue()
+void MainWindow::AddItemDaily()
 {
-    std::cout << "open dialogue" <<std::endl;
+
+    ui->dailylistWidget->push_back("newitem");
+    std::cout << "Add Daily item clicked" <<std::endl;
+}
+
+void MainWindow::RemoveItemDaily()
+{
+    std::cout << "Remove Daily item clicked" <<std::endl;
 }

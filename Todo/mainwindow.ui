@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>614</height>
+    <width>1142</width>
+    <height>540</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,17 +47,89 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="editlistButton">
+   <widget class="QPushButton" name="addtolistButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>140</x>
       <y>490</y>
       <width>96</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>Edit List</string>
+     <string>Add</string>
+    </property>
+   </widget>
+   <widget class="Daily_items" name="weeklylistWidget">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>330</y>
+      <width>491</width>
+      <height>161</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Daily_items" name="endlistWidget">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>50</y>
+      <width>491</width>
+      <height>221</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="EndGoals">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>30</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Final Goals</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="WeeklyGoal">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>310</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Weekly Goals</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="removefromlistButton">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>490</y>
+      <width>96</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Remove</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>290</y>
+      <width>104</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CheckBox</string>
     </property>
    </widget>
   </widget>

@@ -21,7 +21,7 @@ public:
     bool check_repeat(QString name);
     bool isempty();
     QDate getdate(){ return date;}
-    void Load(const Daily_items& list);
+    void Load(Daily_items& list);
 signals:
 
 public slots:

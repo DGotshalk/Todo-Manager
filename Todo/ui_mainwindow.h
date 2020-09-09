@@ -13,10 +13,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
+#include <daily_items.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -26,14 +27,20 @@ public:
     QWidget *centralWidget;
     QCalendarWidget *calendarWidget;
     QLabel *Dailylabel;
-    QListWidget *daily_items;
+    Daily_items *dailylistWidget;
+    QPushButton *addtolistButton;
+    Daily_items *weeklylistWidget;
+    Daily_items *endlistWidget;
+    QLabel *EndGoals;
+    QLabel *WeeklyGoal;
+    QPushButton *removefromlistButton;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(776, 822);
+        MainWindow->resize(1142, 540);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         calendarWidget = new QCalendarWidget(centralWidget);
@@ -41,10 +48,28 @@ public:
         calendarWidget->setGeometry(QRect(0, 0, 501, 301));
         Dailylabel = new QLabel(centralWidget);
         Dailylabel->setObjectName(QStringLiteral("Dailylabel"));
-        Dailylabel->setGeometry(QRect(10, 307, 241, 21));
-        daily_items = new QListWidget(centralWidget);
-        daily_items->setObjectName(QStringLiteral("daily_items"));
-        daily_items->setGeometry(QRect(0, 330, 291, 191));
+        Dailylabel->setGeometry(QRect(190, 310, 91, 21));
+        dailylistWidget = new Daily_items(centralWidget);
+        dailylistWidget->setObjectName(QStringLiteral("dailylistWidget"));
+        dailylistWidget->setGeometry(QRect(0, 330, 491, 161));
+        addtolistButton = new QPushButton(centralWidget);
+        addtolistButton->setObjectName(QStringLiteral("addtolistButton"));
+        addtolistButton->setGeometry(QRect(140, 490, 96, 27));
+        weeklylistWidget = new Daily_items(centralWidget);
+        weeklylistWidget->setObjectName(QStringLiteral("weeklylistWidget"));
+        weeklylistWidget->setGeometry(QRect(550, 330, 491, 161));
+        endlistWidget = new Daily_items(centralWidget);
+        endlistWidget->setObjectName(QStringLiteral("endlistWidget"));
+        endlistWidget->setGeometry(QRect(550, 50, 491, 221));
+        EndGoals = new QLabel(centralWidget);
+        EndGoals->setObjectName(QStringLiteral("EndGoals"));
+        EndGoals->setGeometry(QRect(750, 30, 91, 21));
+        WeeklyGoal = new QLabel(centralWidget);
+        WeeklyGoal->setObjectName(QStringLiteral("WeeklyGoal"));
+        WeeklyGoal->setGeometry(QRect(740, 310, 111, 21));
+        removefromlistButton = new QPushButton(centralWidget);
+        removefromlistButton->setObjectName(QStringLiteral("removefromlistButton"));
+        removefromlistButton->setGeometry(QRect(250, 490, 96, 27));
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -59,6 +84,10 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         Dailylabel->setText(QApplication::translate("MainWindow", "Daily Tasks", nullptr));
+        addtolistButton->setText(QApplication::translate("MainWindow", "Add", nullptr));
+        EndGoals->setText(QApplication::translate("MainWindow", "Final Goals", nullptr));
+        WeeklyGoal->setText(QApplication::translate("MainWindow", "Weekly Goals", nullptr));
+        removefromlistButton->setText(QApplication::translate("MainWindow", "Remove", nullptr));
     } // retranslateUi
 
 };

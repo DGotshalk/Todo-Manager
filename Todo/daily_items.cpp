@@ -24,22 +24,20 @@ bool Daily_items::check_repeat(QString name){
 
 void Daily_items::push_back(QString details){
     if (check_repeat(details)){
-
         QListWidgetItem* newitem = new QListWidgetItem(details);
         this->addItem(newitem);
-        newitem->setFlags(Qt::ItemIsUserCheckable);
+        newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable});
+        newitem->setCheckState(Qt::Unchecked);
     }
 };
 
-void Daily_items::Load(Daily_items const &list){
+
+void Daily_items::Load(Daily_items &list){
     this->clear();
     cur_parent = &list;
-    for (int i =0; i < list.count(); ++i){
-
-        QListWidgetItem* newitem = new QListWidgetItem;
-        this->addItem(newitem);
-        newitem->setFlags(Qt::ItemIsUserCheckable);
-        this->setItemWidget(newitem, new QCheckBox(list.item(i)->text()));
-
+    int total = list.count();
+    for (int i =0; i < total; ++i){
+        this->addItem(list.takeItem(0));
     }
 }
+
