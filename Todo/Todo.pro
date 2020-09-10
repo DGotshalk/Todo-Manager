@@ -27,17 +27,14 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    daily_items.cpp \
-    edit_daily.cpp
+daily_items.cpp
 
 HEADERS += \
         mainwindow.h \
-    daily_items.h \
-    edit_daily.h
+daily_items.h
 
 FORMS += \
-        mainwindow.ui \
-    edit_daily.ui
+mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

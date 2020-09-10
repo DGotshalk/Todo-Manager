@@ -26,7 +26,7 @@ void Daily_items::push_back(QString details){
     if (check_repeat(details)){
         QListWidgetItem* newitem = new QListWidgetItem(details);
         this->addItem(newitem);
-        newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable});
+        newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled});
         newitem->setCheckState(Qt::Unchecked);
     }
 };

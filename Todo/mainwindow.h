@@ -20,9 +20,11 @@ private slots:
 
     void AddItemDaily();
     void RemoveItemDaily();
+    void Deselect(QListWidgetItem *item);
 private:
     Ui::MainWindow *ui;
     Daily_items *current_day;
+    void Daily_items_Connections();
 };
 
 #endif // MAINWINDOW_H
