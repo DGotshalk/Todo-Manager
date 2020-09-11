@@ -41,3 +41,8 @@ void Daily_items::Load(Daily_items &list){
     }
 }
 
+void Daily_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
+    for (auto item: selecteditems){
+        this->removeItemWidget(item);
+    }
+}

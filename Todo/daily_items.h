@@ -7,7 +7,7 @@
 #include <QString>
 #include <iostream>
 #include <QDate>
-
+#include <string>
 class Daily_items : public QListWidget
 {
     const Daily_items* cur_parent;
@@ -22,6 +22,7 @@ public:
     bool isempty();
     QDate getdate(){ return date;}
     void Load(Daily_items& list);
+    void Remove_Selected(QList<QListWidgetItem*> selecteditems);
 signals:
 
 public slots:

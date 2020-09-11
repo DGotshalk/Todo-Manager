@@ -32,10 +32,11 @@ void MainWindow::Deselect(QListWidgetItem *item){
     (item->isSelected())?item->setSelected(false):item->setSelected(true);
 }
 void MainWindow::AddItemDaily(){
-    ui->dailylistWidget->push_back("newitem");
+    ui->dailylistWidget->push_back("new item");
     std::cout << "Add Daily item clicked" <<std::endl;
 }
 
 void MainWindow::RemoveItemDaily(){
+    ui->dailylistWidget->Remove_Selected(ui->dailylistWidget->selectedItems());
     std::cout << "Remove Daily item clicked" <<std::endl;
 }
