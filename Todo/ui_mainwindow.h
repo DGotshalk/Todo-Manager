@@ -17,7 +17,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QLabel>
-<<<<<<< HEAD
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
