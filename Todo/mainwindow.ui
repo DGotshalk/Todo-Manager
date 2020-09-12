@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1142</width>
-    <height>540</height>
+    <width>1041</width>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>501</width>
-      <height>301</height>
+      <width>491</width>
+      <height>261</height>
      </rect>
     </property>
    </widget>
@@ -28,7 +28,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>310</y>
+      <y>270</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -41,7 +41,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>330</y>
+      <y>290</y>
       <width>491</width>
       <height>161</height>
      </rect>
@@ -51,7 +51,7 @@
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>490</y>
+      <y>450</y>
       <width>96</width>
       <height>27</height>
      </rect>
@@ -64,7 +64,7 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>330</y>
+      <y>290</y>
       <width>491</width>
       <height>161</height>
      </rect>
@@ -74,7 +74,7 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>50</y>
+      <y>40</y>
       <width>491</width>
       <height>221</height>
      </rect>
@@ -84,7 +84,7 @@
     <property name="geometry">
      <rect>
       <x>750</x>
-      <y>30</y>
+      <y>20</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -97,7 +97,7 @@
     <property name="geometry">
      <rect>
       <x>740</x>
-      <y>310</y>
+      <y>270</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -110,26 +110,13 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>490</y>
+      <y>450</y>
       <width>96</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
      <string>Remove</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkBox">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>290</y>
-      <width>104</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>CheckBox</string>
     </property>
    </widget>
   </widget>
