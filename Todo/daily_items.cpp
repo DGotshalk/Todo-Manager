@@ -26,7 +26,7 @@ void Daily_items::push_back(QString details){
     if (check_repeat(details)){
         QListWidgetItem* newitem = new QListWidgetItem(details);
         this->addItem(newitem);
-        newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled});
+        newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled, Qt::ItemIsDragEnabled, Qt::ItemIsDragEnabled});
         newitem->setCheckState(Qt::Unchecked);
     }
 };
@@ -43,6 +43,7 @@ void Daily_items::Load(Daily_items &list){
 
 void Daily_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
     for (auto item: selecteditems){
-        this->removeItemWidget(item);
+       int row = this->row(item);
+       delete this->takeItem(row);
     }
 }
