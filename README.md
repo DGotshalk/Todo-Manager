@@ -45,10 +45,3 @@ on *NIX based machines such as Linux or Mac OSX
 * Percentage tasks completed
 * Weekly goals
 * Write Daily lists in advance
-
-
-## On this branch
-* Ability to add and remove from weekly list
-* This means buttons, and items, and essentially a weekly list class
-* Repeat for weeks what we did for daily
-
