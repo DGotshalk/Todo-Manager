@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "daily_items.h"
+#include "weekly_items.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,10 +21,13 @@ private slots:
 
     void AddItemDaily();
     void RemoveItemDaily();
+    void AddItemWeekly();
+    void RemoveItemWeekly();
     void Deselect(QListWidgetItem *item);
 private:
     Ui::MainWindow *ui;
     Daily_items *current_day;
+    Weekly_items *current_week;
     void Daily_items_Connections();
 };
 
