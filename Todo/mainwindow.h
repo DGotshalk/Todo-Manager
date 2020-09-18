@@ -23,6 +23,8 @@ private slots:
     void RemoveItemDaily();
     void AddItemWeekly();
     void RemoveItemWeekly();
+    void AddItemEnd();
+    void RemoveItemEnd();
     void Deselect(QListWidgetItem *item);
 private:
     Ui::MainWindow *ui;

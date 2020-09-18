@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "daily_items.h"
 #include "weekly_items.h"
+#include "end_items.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,6 +28,8 @@ void MainWindow::Daily_items_Connections(){
     QObject::connect(ui->removefromdailylistButton,SIGNAL(clicked()),this, SLOT(RemoveItemDaily()));
     QObject::connect(ui->addtoweeklistButton,SIGNAL(clicked()),this, SLOT(AddItemWeekly()));
     QObject::connect(ui->removefromweeklistButton,SIGNAL(clicked()),this, SLOT(RemoveItemWeekly()));
+    QObject::connect(ui->addtoendlistButton,SIGNAL(clicked()),this, SLOT(AddItemEnd()));
+    QObject::connect(ui->removefromendlistButton,SIGNAL(clicked()),this, SLOT(RemoveItemEnd()));
     //Widgets Items
     //QObject::connect(ui->dailylistWidget, SIGNAL(itemPressed(QListWidgetItem*)),this, SLOT(Deselect(QListWidgetItem*)));
 }
@@ -54,5 +57,13 @@ void MainWindow::AddItemWeekly(){
 
 void MainWindow::RemoveItemWeekly(){
     ui->weeklylistWidget->Remove_Selected(ui->weeklylistWidget->selectedItems());
+}
 
+void MainWindow::AddItemEnd(){
+    ui->endlistWidget->push_back("new item");
+    ui->endlistWidget->editItem(ui->endlistWidget->item(ui->endlistWidget->count()-1));
+}
+
+void MainWindow::RemoveItemEnd(){
+    ui->endlistWidget->Remove_Selected(ui->endlistWidget->selectedItems());
 }

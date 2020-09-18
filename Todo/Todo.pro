@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
     mainwindow.cpp \
 	daily_items.cpp \
-    weekly_items.cpp
+    weekly_items.cpp \
+    end_items.cpp
 
 HEADERS += \
         mainwindow.h \
 	daily_items.h \
-    weekly_items.h
+    weekly_items.h \
+    end_items.h
 
 FORMS += \
 mainwindow.ui

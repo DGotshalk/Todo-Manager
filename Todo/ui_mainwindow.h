@@ -18,6 +18,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 #include <daily_items.h>
+#include <end_items.h>
 #include <weekly_items.h>
 
 QT_BEGIN_NAMESPACE
@@ -31,7 +32,7 @@ public:
     Daily_items *dailylistWidget;
     QPushButton *addtodailylistButton;
     Weekly_items *weeklylistWidget;
-    Daily_items *endlistWidget;
+    End_items *endlistWidget;
     QLabel *EndGoals;
     QLabel *WeeklyGoal;
     QPushButton *removefromdailylistButton;
@@ -63,7 +64,7 @@ public:
         weeklylistWidget = new Weekly_items(centralWidget);
         weeklylistWidget->setObjectName(QStringLiteral("weeklylistWidget"));
         weeklylistWidget->setGeometry(QRect(520, 290, 491, 161));
-        endlistWidget = new Daily_items(centralWidget);
+        endlistWidget = new End_items(centralWidget);
         endlistWidget->setObjectName(QStringLiteral("endlistWidget"));
         endlistWidget->setGeometry(QRect(520, 40, 491, 191));
         EndGoals = new QLabel(centralWidget);

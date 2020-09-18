@@ -70,7 +70,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="Daily_items" name="endlistWidget">
+   <widget class="End_items" name="endlistWidget">
     <property name="geometry">
      <rect>
       <x>520</x>
@@ -185,6 +185,11 @@
    <class>Weekly_items</class>
    <extends>QListWidget</extends>
    <header location="global">weekly_items.h</header>
+  </customwidget>
+  <customwidget>
+   <class>End_items</class>
+   <extends>QListWidget</extends>
+   <header location="global">end_items.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
