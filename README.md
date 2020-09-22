@@ -58,3 +58,8 @@ on *NIX based machines such as Linux or Mac OSX
 * Colorscheme adjustments
 * Daily Task Rollover
 * Percentage tasks completed
+
+## In this branch
+* csv file as DB
+* csv reader/writer class
+* write and save out day/week/end goals
