@@ -29,8 +29,11 @@ If Qt is not installed, it can be found [here](https://doc.qt.io/qt-5/gettingsta
 #### Installing Qt from snap
 If snap is enabled qt5.5 is available there as well. <br>
 Below is the installation method used for manjaro: <br>
+1. Install snapd from package manager, exact command may differ for distros: <br>
 `sudo pacman -Syu snapd` <br>
+2. Enable snap service: <br>
 `sudo systemctl enable --now snapd.socket` <br>
+3. Install qt551 package: <br>
 `sudo snap install qt551` <br>
 <br>
 As an optional step, classic snap support can be enabled: <br>
