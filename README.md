@@ -55,11 +55,6 @@ After building the program can be run with </br>
 on *NIX based machines such as Linux or Mac OSX
 
 ## In development:
-* Ability to change daily list
 * Colorscheme adjustments
-* Daily Task Rollback
-* Layout tweaks
-* Overarching goals
+* Daily Task Rollover
 * Percentage tasks completed
-* Weekly goals
-* Write Daily lists in advance
