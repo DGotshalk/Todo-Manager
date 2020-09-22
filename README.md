@@ -22,7 +22,22 @@ For openSUSE:
 * pattern 
 
 ### Installing Qt
+
+#### Installing Qt from source
 If Qt is not installed, it can be found [here](https://doc.qt.io/qt-5/gettingstarted.html) </br>
+
+#### Installing Qt from snap
+If snap is enabled qt5.5 is available there as well. <br>
+Below is the installation method used for manjaro: <br>
+`sudo pacman -Syu snapd` <br>
+`sudo systemctl enable --now snapd.socket` <br>
+`sudo snap install qt551` <br>
+<br>
+As an optional step, classic snap support can be enabled: <br>
+`sudo ln -s /var/lib/snapd/snap /snap` <br>
+Keep in mind this change will only take effect by logging out or rebooting. <br>
+<br>
+Information from [here](https://snapcraft.io/install/qt551/manjaro) <br>
 
 ## Building and using
 This program needs to be built before it can be run, navigate to the ToDo folder and
