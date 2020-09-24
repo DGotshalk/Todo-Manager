@@ -18,14 +18,14 @@ public:
     ~MainWindow();
 
 private slots: 
-
     void AddItemDaily();
     void RemoveItemDaily();
     void AddItemWeekly();
     void RemoveItemWeekly();
     void AddItemEnd();
     void RemoveItemEnd();
-    void Deselect(QListWidgetItem *item);
+    void Selected_Date(const QDate &date);
+
 private:
     Ui::MainWindow *ui;
     Daily_items *current_day;

@@ -30,15 +30,11 @@ void MainWindow::Daily_items_Connections(){
     QObject::connect(ui->removefromweeklistButton,SIGNAL(clicked()),this, SLOT(RemoveItemWeekly()));
     QObject::connect(ui->addtoendlistButton,SIGNAL(clicked()),this, SLOT(AddItemEnd()));
     QObject::connect(ui->removefromendlistButton,SIGNAL(clicked()),this, SLOT(RemoveItemEnd()));
-    //Widgets Items
-    //QObject::connect(ui->dailylistWidget, SIGNAL(itemPressed(QListWidgetItem*)),this, SLOT(Deselect(QListWidgetItem*)));
+    QObject::connect(ui->calendarWidget,SIGNAL(clicked(const QDate&)),this,SLOT(Selected_Date(const QDate&)));
+
 }
 
 
-// not useful so far
-void MainWindow::Deselect(QListWidgetItem *item){
-    (item->isSelected())?item->setSelected(false):item->setSelected(true);
-}
 
 void MainWindow::AddItemDaily(){
     ui->dailylistWidget->push_back("new item");
@@ -66,4 +62,15 @@ void MainWindow::AddItemEnd(){
 
 void MainWindow::RemoveItemEnd(){
     ui->endlistWidget->Remove_Selected(ui->endlistWidget->selectedItems());
+}
+
+void MainWindow::Selected_Date(const QDate &date){
+    /* used for getting the day of the year (365) and the week number (1-52)
+    std::cout << date.toString().toStdString() << std::endl;
+    std::cout << "day: " << date.dayOfYear() << std::endl;
+    std::cout << "Week: " << date.weekNumber() << std::endl;
+    */
+    QDateTime current_day(date);
+    current_day.setTimeSpec(Qt::UTC);
+    std::cout << current_day.toTime_t() << std::endl;
 }
