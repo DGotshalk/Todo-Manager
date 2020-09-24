@@ -60,6 +60,6 @@ on *NIX based machines such as Linux or Mac OSX
 * Percentage tasks completed
 
 ## In this branch
-* csv file as DB
-* csv reader/writer class
-* write and save out day/week/end goals
+* Get date and week from clicking the calendar
+* be able to pass the date, and the items of that date to something
+* convert that to unix time 
