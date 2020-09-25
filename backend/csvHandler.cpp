@@ -6,23 +6,33 @@
 #include <string>
 #include <vector>
 
-// Included Files
+// File inclusion
 #include "csvHandler.h"
 
-// C++ file for the csvHandler class
-// This class is the main class for the backend
+using namespace std;
 
-class csvHandler {
-	// Functions
-	public:
-		// Read csv file into 2d vector
-		// Add event to object
-		// Remove event from object
-		// Write object to csv file
-		// Sort object
+// C++ file containing class function definitions 
 
-	// Variables 
-	protected:
-		// 2d vector
+// Constructor, read file into vectors 
+csvHandler::csvHandler()
+{
+	// Read csv file and write to vectors 
+	// Open file stream
+	// Close file stream
+}
 
-};
+// Write vectors to csv file 
+void csvHandler::writeOut()
+{
+	// Open file stream
+	// Truncate file 
+	// For loop to create string from vectors and write string to file
+	// Close file stream
+	cout << "Writing" << endl;
+}
+
+void csvHandler::outputVec()
+{
+	// For loop to output vectors 
+	cout << "Outputting" << endl;
+}
