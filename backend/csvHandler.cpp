@@ -16,6 +16,8 @@ class csvHandler {
 	// Functions
 	public:
 		// Read csv file into 2d vector
+		// Add event to object
+		// Remove event from object
 		// Write object to csv file
 		// Sort object
 
