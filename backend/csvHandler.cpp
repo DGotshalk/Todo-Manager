@@ -24,8 +24,21 @@ csvHandler::csvHandler()
 // Write vectors to csv file 
 void csvHandler::writeOut()
 {
-	// Open file stream
 	// Truncate file 
+	///* Replace csv with correct filename
+	ifstream input( "sample.csv", ios::binary );
+        char buffer;
+        string outfile = "sample.csv";
+        ofstream appendFile(outfile, ios_base::out);
+        for(int i=0; i<0; i++) 
+        {
+                input.read( &buffer, sizeof(buffer) );
+                appendFile.write(&buffer,1);
+        }
+        appendFile.close(); 
+	//*/
+	
+	// Open file stream
 	// For loop to create string from vectors and write string to file
 	// Close file stream
 	cout << "Writing" << endl;
