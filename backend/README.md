@@ -21,3 +21,6 @@ All of them are part of the csvHandler class file:
 
 ### csvSort
 
+Read tasks from a date 
+Update a row with new info
+Add days (add event)
