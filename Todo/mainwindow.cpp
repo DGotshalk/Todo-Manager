@@ -71,6 +71,16 @@ void MainWindow::Selected_Date(const QDate &date){
     std::cout << "Week: " << date.weekNumber() << std::endl;
     */
     QDateTime current_day(date);
+    if (date  == ui->dailylistWidget->getdate()){
+        return;
+    }
+    else {			//need extra logic for deciding weeks
+        csvHandler.writeout(ui->dailylistWidget);
+        csvHandler.read(ui->dailylistWidget);
+    }
+
+    // can do this in the csv handler file
     current_day.setTimeSpec(Qt::UTC);
     std::cout << current_day.toTime_t() << std::endl;
+
 }

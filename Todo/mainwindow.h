@@ -25,7 +25,6 @@ private slots:
     void AddItemEnd();
     void RemoveItemEnd();
     void Selected_Date(const QDate &date);
-
 private:
     Ui::MainWindow *ui;
     Daily_items *current_day;
