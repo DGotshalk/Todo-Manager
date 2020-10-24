@@ -7,6 +7,15 @@ Using this program requires the following be installed:
 * g++
 * Qt 5.15
 
+## Back and Front-end
+### Front-end
+The front end of the application is written in C++ and uses Qt to render the UI. <br>
+
+### Back-end
+The back end of the application uses C++ to parse data to and from a csv file. Using
+a csv files means that a database is not necessary and helps keep the size
+and complexity of the project down. <br>
+
 ### Qt Requirements
 These are items required by Qt, by Linux distro style </br>
 For .deb based systems such Debian or Ubuntu:
@@ -22,9 +31,8 @@ For openSUSE:
 * pattern 
 
 ### Installing Qt
-
 #### Installing Qt from source
-If Qt is not installed, it can be found [here](https://doc.qt.io/qt-5/gettingstarted.html) </br>
+If Qt is not installed, installation can be found [here](https://doc.qt.io/qt-5/gettingstarted.html) </br>
 
 #### Installing Qt from snap
 If snap is enabled qt5.5 is available there as well. <br>
@@ -47,7 +55,7 @@ This program needs to be built before it can be run, navigate to the ToDo folder
 build using: </br>
 `qmake Todo.pro` </br>
 
-This will create a make file, which can be made using: </br>
+This will create a make file, which can be executed using: </br>
 `make`
 
 After building the program can be run with </br>
@@ -58,9 +66,8 @@ on *NIX based machines such as Linux or Mac OSX
 * Colorscheme adjustments
 * Daily Task Rollover
 * Percentage tasks completed
-
-## In this branch
-* Get date and week from clicking the calendar [x]
-* be able to pass the date, and the items of that date to something [x]
-* convert that to unix time [X] 
-* write function to write out all data in the list objects (i.e. "date, info;info;info;.." in the daily/weekly/final goals objects)
+* Back-end 
+  - CSV file 
+  - C++ parser 
+* Binary for release
+>>>>>>> 3e2f51cf1854cc90a0dd32f5a0c1c659a03470b3

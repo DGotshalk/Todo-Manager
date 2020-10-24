@@ -2,4 +2,5 @@
 build-Todo-Desktop-Debug/
 current_elements
 Todo/.qmake.stash
-
+*~
+.*~
