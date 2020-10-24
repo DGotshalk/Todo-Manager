@@ -15,7 +15,7 @@ class csvHandler {
 	// Functions
 	public:
 		// Read csv file into vectors
-		//void readIn();
+		std::string readIn(std::string date);
 		//Testing reading in as part of constructor
 		
 		// Add event to object (in dev)
@@ -23,7 +23,7 @@ class csvHandler {
 		// Remove event from object (in dev)
 
 		// Write object to csv file
-		void writeOut();
+		void writeOut(std::string date, std::string content);
 		
 		// Sort object (in dev)
 
@@ -37,7 +37,7 @@ class csvHandler {
 	private:
 		// Vector for date
 		std::vector<int> dateVec;
-		
+	    std::string csv_name;	
 		// Vector for event data
 		std::vector<std::string> eventVec;
 };
