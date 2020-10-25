@@ -23,6 +23,7 @@ public:
     QDate getdate(){ return date;}
     void Load(Daily_items& list);
     void Remove_Selected(QList<QListWidgetItem*> selecteditems);
+    std::string Dump_To_CSV();
 signals:
 
 public slots:

@@ -39,11 +39,15 @@ void Daily_items::Load(Daily_items &list){
     for (int i =0; i < total; ++i){
         this->addItem(list.takeItem(0));
     }
-}
+};
 
 void Daily_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
     for (auto item: selecteditems){
        int row = this->row(item);
        delete this->takeItem(row);
     }
-}
+};
+
+std::string Daily_items::Dump_To_CSV(){
+
+};
