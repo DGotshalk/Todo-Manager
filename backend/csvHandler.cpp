@@ -16,10 +16,10 @@ using namespace std;
 // Constructor, read file into vectors 
 csvHandler::csvHandler()
 {
-	csv_name = "backend.csv";
-	// Read csv file and write to vectors 
-	// Open file stream
-	// Close file stream
+	csv_name = "null.csv";
+}
+csvHandler::csvHandler(std::string filename){
+	csv_name = filename;
 }
 // Check the date  against dates in the database
 std::string csvHandler::readIn(std::string date){
@@ -28,15 +28,30 @@ std::string csvHandler::readIn(std::string date){
 	// return the line on the csv file
 }
 // Write vectors to csv file \\Content is the combined "date, details,
-// plan is to have "Date, content; checked;; contentl checked;;" etc etc etc
-void csvHandler::writeOut(std::string date, std::string content)
-{
-	// either format the data here, or before input, im thinking you do it here
-	// put it in the format in the comment above the function name
-	// insert it in to the file
-	// if we can match the dates then replace the line there,
-	// if not make a new line (do we sort here or later? probably on insertion) 
-	
+// plan is to have "Date, content; checked, content; checked," etc etc etc
+void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
+{	
+	//Processing input data		
+	std::string row;
+	row += date + ",";
+	for (auto line: content){
+		row+= line + ",";
+	}
+	row += "\n";
+	//Now this data should be in date;content;checked;;content;checked;;
+		
+	//open old file and a new file
+	//either search for the exact date, or find where the date should be
+	//everytime we process a line, we write that to the new file
+	//after we do our updating or whatever, then we need to replace the old file with the new file an change name
+	ifstream infile(csv_name, ios_base::in);
+	std::string newfile = "new_" + csv_name;
+	ofstream outfile(newfile, ios_base::out);
+
+
+
+
+
 
 
 	/* Test writing to the sample csv

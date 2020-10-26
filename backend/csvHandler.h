@@ -23,7 +23,7 @@ class csvHandler {
 		// Remove event from object (in dev)
 
 		// Write object to csv file
-		void writeOut(std::string date, std::string content);
+		void writeOut(std::string& date, std::vector<std::string>& content);
 		
 		// Sort object (in dev)
 
@@ -32,12 +32,13 @@ class csvHandler {
 		
 		// Constructor
 		csvHandler();
+		csvHandler(std::string filename);
 
 	// Variables 
 	private:
 		// Vector for date
 		std::vector<int> dateVec;
-	    std::string csv_name;	
+	    std::string csv_name;
 		// Vector for event data
 		std::vector<std::string> eventVec;
 };
