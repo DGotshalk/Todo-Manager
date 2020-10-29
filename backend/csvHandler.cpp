@@ -29,6 +29,9 @@ std::string csvHandler::readIn(std::string date){
 }
 // Write vectors to csv file \\Content is the combined "date, details,
 // plan is to have "Date, content; checked, content; checked," etc etc etc
+
+
+
 void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
 {	
 	//Processing input data		
@@ -38,8 +41,9 @@ void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
 		row+= line + ",";
 	}
 	row += "\n";
-	//Now this data should be in date;content;checked;;content;checked;;
-		
+	//Now this data should be in date;content;checked,content;checked,...
+	
+
 	//open old file and a new file
 	//either search for the exact date, or find where the date should be
 	//everytime we process a line, we write that to the new file
@@ -47,10 +51,27 @@ void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
 	ifstream infile(csv_name, ios_base::in);
 	std::string newfile = "new_" + csv_name;
 	ofstream outfile(newfile, ios_base::out);
-
-
-
-
+	while (true){
+		std::string current_line_date = "";
+		std::getline(infile, current_line_date, ',');
+		if (infile.eof()){
+			break;
+		}
+		if (date == current_line_date){
+			outfile << row;
+		}
+		else if (std::stoi(date) > std::stoi(current_line_date)){
+			outfile << row;
+			std::string rest_of_line;
+			std::getline(infile, rest_of_line);
+			outfile << current_line_date + "," + rest_of_line + "\n"; 
+		}
+		else {
+			std::string rest_of_line;
+			std::getline(infile, rest_of_line);
+			outfile << current_line_date + "," + rest_of_line + "\n"; 
+		}
+	}
 
 
 
