@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <filesystem>
+
 
 // File inclusion
 #include "csvHandler.h"
@@ -16,17 +18,17 @@ using namespace std;
 // Constructor, read file into vectors 
 csvHandler::csvHandler()
 {
-	csv_name = "null.csv";
+	csv_name = "sample.csv";
 }
 csvHandler::csvHandler(std::string filename){
 	csv_name = filename;
 }
 // Check the date  against dates in the database
-std::string csvHandler::readIn(std::string date){
+//std::string csvHandler::readIn(std::string date){
 	// open the csv file
 	// read the csv file and match the first column with the date parameter
 	// return the line on the csv file
-}
+//}
 // Write vectors to csv file \\Content is the combined "date, details,
 // plan is to have "Date, content; checked, content; checked," etc etc etc
 
@@ -51,6 +53,7 @@ void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
 	ifstream infile(csv_name, ios_base::in);
 	std::string newfile = "new_" + csv_name;
 	ofstream outfile(newfile, ios_base::out);
+	bool written = false;
 	while (true){
 		std::string current_line_date = "";
 		std::getline(infile, current_line_date, ',');
@@ -59,12 +62,14 @@ void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
 		}
 		if (date == current_line_date){
 			outfile << row;
+			written = true;
 		}
-		else if (std::stoi(date) > std::stoi(current_line_date)){
+		else if (std::stoi(date) > std::stoi(current_line_date) && written == false){
 			outfile << row;
 			std::string rest_of_line;
 			std::getline(infile, rest_of_line);
 			outfile << current_line_date + "," + rest_of_line + "\n"; 
+			written = true;
 		}
 		else {
 			std::string rest_of_line;
@@ -72,27 +77,9 @@ void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
 			outfile << current_line_date + "," + rest_of_line + "\n"; 
 		}
 	}
-
-
-
-	/* Test writing to the sample csv
-	ifstream input( "sample.csv", ios::binary );
-	char buffer;
-	string outfile = "sample.csv";
-	ofstream appendFile(outfile, ios_base::out);
-	for(int i=0; i<0; i++) 
-	{
-		input.read( &buffer, sizeof(buffer) ); 
-		appendFile.write(&buffer,1);
-	}
-	appendFile.close(); 
-	//
-	
-	// Open file stream
-	// For loop to create string from vectors and write string to file
-	// Close file stream
-	cout << "Writing" << endl;
-	*/
+	infile.close();
+	outfile.close();
+	std::rename(newfile.c_str(), csv_name.c_str());
 }
 
 void csvHandler::outputVec()
