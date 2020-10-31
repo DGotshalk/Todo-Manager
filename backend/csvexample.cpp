@@ -11,5 +11,8 @@ int main(){
 	std::string date{"1600766348"}; 
 	std::vector<std::string> data{"i literally just want this to work"};
 	newcsv.writeOut(date, data);
+	newcsv.readIn("1600767347");
+	
+	
 	return 0;
 }

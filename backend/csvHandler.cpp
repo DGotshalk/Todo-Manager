@@ -6,8 +6,8 @@
 #include <string>
 #include <vector>
 #include <filesystem>
-
-
+#include <sstream>
+#include <utility>
 // File inclusion
 #include "csvHandler.h"
 
@@ -32,20 +32,45 @@ csvHandler::csvHandler(std::string filename){
 // Write vectors to csv file \\Content is the combined "date, details,
 // plan is to have "Date, content; checked, content; checked," etc etc etc
 
-
+std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
+		ifstream infile(csv_name, ios_base::in);
+		std::vector<std::pair<std::string,bool>> db_vector;	
+		while (true){
+			std::string current_line_date = "";
+			std::getline(infile, current_line_date, ',');
+			if (date == current_line_date){
+				std::string data;		
+				std::getline(infile,data);	
+				std::stringstream data_strm(data); //data_strm is a row in the csv file
+				while(data_strm.good()){
+					std::string single_line;
+					std::getline(data_strm,single_line,',');
+					std::istringstream single_stream(single_line); //single_stream should be task;checked 
+					std::string task;
+					std::getline(single_stream,task,';');
+					bool checked;	
+					single_stream >> checked;
+					std::pair<std::string, bool> newpair(task,checked);
+					db_vector.push_back(newpair);
+				}
+				break;
+			}
+		}
+		return db_vector;
+}
 
 void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
 {	
 	//Processing input data		
+	//still need to handle semicolons and commas in my data 
 	std::string row;
-	row += date + ",";
+	row += date;
 	for (auto line: content){
-		row+= line + ",";
+		row+= ","+ line;
 	}
 	row += "\n";
 	//Now this data should be in date;content;checked,content;checked,...
 	
-
 	//open old file and a new file
 	//either search for the exact date, or find where the date should be
 	//everytime we process a line, we write that to the new file
@@ -62,6 +87,8 @@ void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
 		}
 		if (date == current_line_date){
 			outfile << row;
+			std::string rest_of_line;
+			std::getline(infile, rest_of_line);
 			written = true;
 		}
 		else if (std::stoi(date) > std::stoi(current_line_date) && written == false){

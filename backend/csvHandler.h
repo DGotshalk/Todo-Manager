@@ -9,13 +9,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include <utility>
 // This class is the main class for the backend
 class csvHandler {
 	// Functions
 	public:
 		// Read csv file into vectors
-		std::string readIn(std::string date);
+		std::vector<std::pair<std::string,bool>> readIn(std::string date);
 		//Testing reading in as part of constructor
 		
 		// Add event to object (in dev)
