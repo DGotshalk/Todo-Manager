@@ -42,7 +42,7 @@ std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
 				std::string data;		
 				std::getline(infile,data);	
 				std::stringstream data_strm(data); //data_strm is a row in the csv file
-				while(data_strm.good()){
+				while(data_strm.good()){	
 					std::string single_line;
 					std::getline(data_strm,single_line,',');
 					std::istringstream single_stream(single_line); //single_stream should be task;checked 
@@ -51,10 +51,14 @@ std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
 					bool checked;	
 					single_stream >> checked;
 					std::pair<std::string, bool> newpair(task,checked);
-					db_vector.push_back(newpair);
+					db_vector.push_back(newpair);	
 				}
 				break;
 			}
+			else if (infile.eof()){
+				break;
+			}
+			std::getline(infile,current_line_date);
 		}
 		return db_vector;
 }
