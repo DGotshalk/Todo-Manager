@@ -48,6 +48,3 @@ void End_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
     }
 };
 
-std::string End_items::Dump_To_CSV(){
-
-};

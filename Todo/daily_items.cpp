@@ -48,6 +48,26 @@ void Daily_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
     }
 };
 
-std::string Daily_items::Dump_To_CSV(){
+void Daily_items::Date_Selected(const QDate &date){
+    if (date  == cur_date){
+        return;
+    }
+    else {			//need extra logic for deciding weeks
+        //write out the data in the field
+        QDateTime old_day(cur_date);
+        old_day.setTimeSpec(Qt::UTC);
+
+
+        cur_date = date;
+        QDateTime current_day(date);
+        current_day.setTimeSpec(Qt::UTC);
+
+    }
+};
+
+std::vector<std::pair<std::string,bool>> Daily_items::format_data_for_csv(){
+//iterate through items in the current list
+//put them in to a std::vector<std::pair<std::string,bool>> vector;
+//return that vector
 
 };

@@ -8,22 +8,27 @@
 #include <iostream>
 #include <QDate>
 #include <string>
+#include "csvHandler.h"
+#include <utility>
+
 class Daily_items : public QListWidget
 {
     const Daily_items* cur_parent;
 
-    QDate date;
+    QDate cur_date;
     Q_OBJECT
-
+    csvHandler history;
+    void Date_Selected(const QDate & date);
+    std::vector<std::pair<std::string,bool>> format_data_for_csv();
 public:
-    explicit Daily_items(QWidget *parent = nullptr): QListWidget(parent) {}
+    explicit Daily_items(QWidget *parent = nullptr): QListWidget(parent), history("daily.csv") {}
     void push_back(QString detail);
     bool check_repeat(QString name);
     bool isempty();
-    QDate getdate(){ return date;}
+    QDate getdate(){ return cur_date;}
     void Load(Daily_items& list);
     void Remove_Selected(QList<QListWidgetItem*> selecteditems);
-    std::string Dump_To_CSV();
+
 signals:
 
 public slots:

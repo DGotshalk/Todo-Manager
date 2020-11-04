@@ -11,6 +11,7 @@
 #include <vector>
 #include <utility>
 // This class is the main class for the backend
+
 class csvHandler {
 	// Functions
 	public:
@@ -23,7 +24,7 @@ class csvHandler {
 		// Remove event from object (in dev)
 
 		// Write object to csv file
-		void writeOut(std::string& date, std::vector<std::string>& content);
+		void writeOut(std::string date, std::vector<std::pair<std::string,bool>> content);
 		
 		// Sort object (in dev)
 

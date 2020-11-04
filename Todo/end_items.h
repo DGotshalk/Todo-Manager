@@ -8,6 +8,7 @@
 #include <iostream>
 #include <QDate>
 #include <string>
+#include "csvHandler.h"
 
 class End_items : public QListWidget
 {
@@ -15,15 +16,17 @@ class End_items : public QListWidget
 
     QDate date;
     Q_OBJECT
+    csvHandler history;
 
 public:
-    explicit End_items(QWidget *parent = nullptr): QListWidget(parent) {}
+    explicit End_items(QWidget *parent = nullptr): QListWidget(parent), history("end.csv") {}
     void push_back(QString detail);
     bool check_repeat(QString name);
     bool isempty();
     QDate getdate(){ return date;}
     void Load(End_items& list);
-    void Remove_Selected(QList<QListWidgetItem*> selecteditems);
+    void Remove_Selected(QList<QListWidgetItem*> selecteditems); 
+
 signals:
 
 public slots:

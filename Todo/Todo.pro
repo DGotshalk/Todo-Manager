@@ -29,13 +29,15 @@ SOURCES += \
     mainwindow.cpp \
 	daily_items.cpp \
     weekly_items.cpp \
-    end_items.cpp
+    end_items.cpp \
+    csvHandler.cpp
 
 HEADERS += \
         mainwindow.h \
 	daily_items.h \
     weekly_items.h \
-    end_items.h
+    end_items.h \
+    csvHandler.h
 
 FORMS += \
 mainwindow.ui
