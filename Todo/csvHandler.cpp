@@ -16,10 +16,6 @@
 
 using namespace std;
 
-inline std::string const BooltoString(bool b){
-	return b ? "1": "0";
-}
-
 // C++ file containing class function definitions 
 
 // Constructor, read file into vectors 
@@ -50,17 +46,13 @@ std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
 				std::getline(infile,data);	
 				std::stringstream data_strm(data); //data_strm is a row in the csv file
 				while(data_strm.good()){	
-					
-					std::string task;	
-					std::getline(data_strm,task,',');	
-					std::replace(task.begin(),task.end(),'\\', ',');	
-					std::string checked_as_string;
-					std::getline(data_strm, checked_as_string, ',');
-					std::istringstream check_stream(checked_as_string);	
-					bool checked;
-					check_stream >> checked;
-					
-					
+					std::string single_line;
+					std::getline(data_strm,single_line,',');
+					std::istringstream single_stream(single_line); //single_stream should be task;checked 
+					std::string task;
+					std::getline(single_stream,task,';');
+					bool checked;	
+					single_stream >> checked;
 					std::pair<std::string, bool> newpair(task,checked);
 					db_vector.push_back(newpair);	
 				}
@@ -74,22 +66,18 @@ std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
 		return db_vector;
 }
 
-void csvHandler::writeOut(std::string& date, std::vector<std::string>& content, std::vector<bool>& checked)
+void csvHandler::writeOut(std::string& date, std::vector<std::string>& content)
 {	
 	//Processing input data		
 	//still need to handle semicolons and commas in my data 
 	std::string row;
 	row += date;
-	int size = content.size();
-	for (int i = 0; i < size; ++i ){
-				
-		std::replace(content[i].begin(),content[i].end(),',','\\');	
-		row+= ","+ content[i] +","+ BooltoString(checked[i]);
-
+	for (auto line: content){
+		std::replace(line.begin(),line.end(),',','\\');	
+		row+= ","+ line;
 	}
 	row += "\n";
-	
-	//Now this data should be in date,content,checked,content,checked,...
+	//Now this data should be in date;content;checked,content;checked,...
 	//open old file nd a new file
 	//either search for the exact date, or find where the date should be
 	//everytime we process a line, we write that to the new file

@@ -23,7 +23,7 @@ class csvHandler {
 		// Remove event from object (in dev)
 
 		// Write object to csv file
-		void writeOut(std::string& date, std::vector<std::string>& content, std::vector<bool>& checked);
+		void writeOut(std::string& date, std::vector<std::string>& content);
 		
 		// Sort object (in dev)
 
