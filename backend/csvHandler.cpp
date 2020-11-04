@@ -23,13 +23,14 @@ inline std::string const BooltoString(bool b){
 // C++ file containing class function definitions 
 
 // Constructor, read file into vectors 
-csvHandler::csvHandler()
-{
+csvHandler::csvHandler(){
 	csv_name = "sample.csv";
 }
+
 csvHandler::csvHandler(std::string filename){
 	csv_name = filename;
 }
+
 // Check the date  against dates in the database
 //std::string csvHandler::readIn(std::string date){
 	// open the csv file
@@ -74,17 +75,14 @@ std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
 		return db_vector;
 }
 
-void csvHandler::writeOut(std::string& date, std::vector<std::string>& content, std::vector<bool>& checked)
-{	
+void csvHandler::writeOut(std::string date, std::vector<std::pair<std::string,bool>> content){	
 	//Processing input data		
 	//still need to handle semicolons and commas in my data 
 	std::string row;
 	row += date;
-	int size = content.size();
-	for (int i = 0; i < size; ++i ){
-				
-		std::replace(content[i].begin(),content[i].end(),',','\\');	
-		row+= ","+ content[i] +","+ BooltoString(checked[i]);
+	for (auto line: content){
+		std::replace(line.first.begin(),line.first.end(),',','\\');	
+		row+= ","+ line.first +","+ BooltoString(line.second);
 
 	}
 	row += "\n";
