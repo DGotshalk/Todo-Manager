@@ -69,5 +69,18 @@ std::vector<std::pair<std::string,bool>> Daily_items::format_data_for_csv(){
 //iterate through items in the current list
 //put them in to a std::vector<std::pair<std::string,bool>> vector;
 //return that vector
-
+    int total = this->count();
+    std::vector<std::pair<std::string,bool>> listitems;
+    for (int i=0; i < total; ++i){
+        QString information = this->item(i)->text();
+        bool checked;
+        if (this->item(i)->checkState() == Qt::Checked){
+            checked = true;
+        }
+        else{
+            checked = false;
+        }
+        listitems.push_back({information.toStdString(),checked});
+    }
+    return listitems;
 };
