@@ -17,6 +17,7 @@ class End_items : public QListWidget
     QDate date;
     Q_OBJECT
     csvHandler history;
+    std::vector<std::pair<std::string,bool>> format_data_for_csv();
 
 public:
     explicit End_items(QWidget *parent = nullptr): QListWidget(parent), history("end.csv") {}
