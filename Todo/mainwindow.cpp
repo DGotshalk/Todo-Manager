@@ -14,13 +14,17 @@ MainWindow::MainWindow(QWidget *parent) :
     current_day->push_back("finish weekly list");
     current_week = new Weekly_items;
     current_week->push_back("finish Todo app");
-    ui->dailylistWidget->Load(*current_day);
-    ui->weeklylistWidget->Load(*current_week);
+    //ui->dailylistWidget->Load(*current_day);
+    //ui->weeklylistWidget->Load(*current_week);
 }
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+// add the Date Selected functions from weekly and daily into the mix
+// have to make it so that whenver an item is added, or removed, or edited
+// in the end list, it gets written out to that list
 
 void MainWindow::Daily_items_Connections(){
     //Buttons
@@ -76,12 +80,12 @@ void MainWindow::Selected_Date(const QDate &date){
         return;
     }
     else {			//need extra logic for deciding weeks
-        csvHandler.writeout(ui->dailylistWidget);
-        csvHandler.read(ui->dailylistWidget);
+       // csvHandler.writeout(ui->dailylistWidget);
+       // csvHandler.read(ui->dailylistWidget);
     }
 
     // can do this in the csv handler file
     current_day.setTimeSpec(Qt::UTC);
-    std::cout << current_day.toTime_t() << std::endl;
+    std::cout << current_day.toString().toStdString() << std::endl;
 
 }

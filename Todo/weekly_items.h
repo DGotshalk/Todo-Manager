@@ -27,7 +27,7 @@ public:
     bool check_repeat(QString name);
     bool isempty();
     QDate getdate(){ return cur_date;}
-    void Load(Weekly_items& list);
+    void Load(std::vector<std::pair<std::string,bool>> list);
     void Remove_Selected(QList<QListWidgetItem*> selecteditems);
 
 signals:
