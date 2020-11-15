@@ -60,7 +60,7 @@ void Weekly_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
 //if the date has changed, then you want it save the current data into the csv
 // and then load the date is has changed to from the csv into the list using Load()
 // change the format of the date here to be in weeks instead of the daaay
-void Weekly_items::Date_Selected(const QDate &date){
+void Weekly_items::Date_Selected(const QDate &date){ 
     if (date  == cur_date){
         return;
     }
@@ -72,7 +72,6 @@ void Weekly_items::Date_Selected(const QDate &date){
         cur_date = date;
         QDateTime current_day(date);
         current_day.setTimeSpec(Qt::UTC);
-        std::cout << "loading new day" << std::endl;
         this->Load(history.readIn(current_day.toString().toStdString()));
     }
 };
