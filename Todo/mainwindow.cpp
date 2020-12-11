@@ -14,13 +14,17 @@ MainWindow::MainWindow(QWidget *parent) :
     current_day->push_back("finish weekly list");
     current_week = new Weekly_items;
     current_week->push_back("finish Todo app");
-    ui->dailylistWidget->Load(*current_day);
-    ui->weeklylistWidget->Load(*current_week);
+    //ui->dailylistWidget->Load(*current_day);
+    //ui->weeklylistWidget->Load(*current_week);
 }
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+// add the Date Selected functions from weekly and daily into the mix
+// have to make it so that whenver an item is added, or removed, or edited
+// in the end list, it gets written out to that list
 
 void MainWindow::Daily_items_Connections(){
     //Buttons
@@ -30,15 +34,12 @@ void MainWindow::Daily_items_Connections(){
     QObject::connect(ui->removefromweeklistButton,SIGNAL(clicked()),this, SLOT(RemoveItemWeekly()));
     QObject::connect(ui->addtoendlistButton,SIGNAL(clicked()),this, SLOT(AddItemEnd()));
     QObject::connect(ui->removefromendlistButton,SIGNAL(clicked()),this, SLOT(RemoveItemEnd()));
-    //Widgets Items
-    //QObject::connect(ui->dailylistWidget, SIGNAL(itemPressed(QListWidgetItem*)),this, SLOT(Deselect(QListWidgetItem*)));
+    //change the selected date function from being inside this class to being inside the other classes. I want to pass the info appropriatly
+    QObject::connect(ui->calendarWidget,SIGNAL(clicked(const QDate&)),this,SLOT(Selected_Date(const QDate&)));
+
 }
 
 
-// not useful so far
-void MainWindow::Deselect(QListWidgetItem *item){
-    (item->isSelected())?item->setSelected(false):item->setSelected(true);
-}
 
 void MainWindow::AddItemDaily(){
     ui->dailylistWidget->push_back("new item");
@@ -66,4 +67,25 @@ void MainWindow::AddItemEnd(){
 
 void MainWindow::RemoveItemEnd(){
     ui->endlistWidget->Remove_Selected(ui->endlistWidget->selectedItems());
+}
+
+void MainWindow::Selected_Date(const QDate &date){
+    /* used for getting the day of the year (365) and the week number (1-52)
+    std::cout << date.toString().toStdString() << std::endl;
+    std::cout << "day: " << date.dayOfYear() << std::endl;
+    std::cout << "Week: " << date.weekNumber() << std::endl;
+    */
+    QDateTime current_day(date);
+    if (date  == ui->dailylistWidget->getdate()){
+        return;
+    }
+    else {			//need extra logic for deciding weeks
+       // csvHandler.writeout(ui->dailylistWidget);
+       // csvHandler.read(ui->dailylistWidget);
+    }
+
+    // can do this in the csv handler file
+    current_day.setTimeSpec(Qt::UTC);
+    std::cout << current_day.toString().toStdString() << std::endl;
+
 }
