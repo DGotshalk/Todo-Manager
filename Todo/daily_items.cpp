@@ -31,8 +31,17 @@ void Daily_items::push_back(QString details){
     }
 };
 
+std::string Daily_items::QDate_To_Day(){
+    std::string day = std::to_string(cur_date.dayOfYear());
+    std::string year = std::to_string(cur_date.year());
+    return day +"_"+year;
+}
 
 
+void Daily_items::Start_Date(const QDate &date){
+   cur_date=date;
+    this->Load(history.readIn(QDate_To_Day()));
+}
 
 // Change load to take a vector<pair<String,bool>>, and add that item as well as the check state to the list
 void Daily_items::Load(std::vector<std::pair<std::string,bool>> list){
@@ -52,8 +61,6 @@ void Daily_items::Load(std::vector<std::pair<std::string,bool>> list){
     }
 };
 
-
-
 void Daily_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
     for (auto item: selecteditems){
        int row = this->row(item);
@@ -67,17 +74,10 @@ void Daily_items::Date_Selected(const QDate &date){
     if (date  == cur_date){
         return;
     }
-    else {			//need extra logic for deciding weeks
-        //write out the data in the field
-        QDateTime old_day(cur_date);
-        old_day.setTimeSpec(Qt::UTC);
-        history.writeOut(old_day.toString().toStdString(),this->format_data_for_csv());
-
-        cur_date = date;
-        QDateTime current_day(date);
-        current_day.setTimeSpec(Qt::UTC);
-        std::cout << "loading new day" << std::endl;
-        this->Load(history.readIn(current_day.toString().toStdString()));
+    else {
+        history.writeOut(QDate_To_Day(),this->format_data_for_csv());
+        cur_date = date; 
+        this->Load(history.readIn(QDate_To_Day()));
     }
 };
 

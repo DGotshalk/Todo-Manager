@@ -41,12 +41,18 @@ csvHandler::csvHandler(std::string filename){
 // plan is to have "Date, content; checked, content; checked," etc etc etc
 
 std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
-		ifstream infile(csv_name, ios_base::in);
+        ifstream infile;
+        std::cout << csv_name <<std::endl;
+        infile.open(csv_name, ios_base::in);
 		std::vector<std::pair<std::string,bool>> db_vector;	
-		while (true){
+        if (!infile){
+            std::cout << "the file failed to open?" <<std::endl;
+        }
+        while (true){
 			std::string current_line_date = "";
-			std::getline(infile, current_line_date, ',');
-			if (date == current_line_date){
+            std::getline(infile, current_line_date, ',');
+
+            if (date == current_line_date){
 				std::string data;		
 				std::getline(infile,data);	
 				std::stringstream data_strm(data); //data_strm is a row in the csv file
@@ -64,10 +70,12 @@ std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
 					
 					std::pair<std::string, bool> newpair(task,checked);
 					db_vector.push_back(newpair);	
-				}
+                }
+                infile.close();
 				break;
 			}
-			else if (infile.eof()){
+            else if (infile.eof()){
+                infile.close();
 				break;
 			}
 			std::getline(infile,current_line_date);
@@ -103,7 +111,7 @@ void csvHandler::writeOut(std::string date, std::vector<std::pair<std::string,bo
 		outfile << row;
 	}
 	else{
-		while (true){
+        while (true){
 			if (infile.eof()){
 				break;
 			}

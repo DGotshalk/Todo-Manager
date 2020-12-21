@@ -31,6 +31,17 @@ void Weekly_items::push_back(QString details){
     }
 };
 
+std::string Weekly_items::QDate_To_Week(){
+    std::string day = std::to_string(cur_date.weekNumber());
+    std::string year = std::to_string(cur_date.year());
+    return day +"_"+year;
+}
+
+
+void Weekly_items::Start_Date(const QDate &date){
+   cur_date=date;
+    this->Load(history.readIn(QDate_To_Week()));
+}
 
 // Change load to take a vector<pair<String,bool>>, and add that item as well as the check state to the list
 void Weekly_items::Load(std::vector<std::pair<std::string,bool>> list){
@@ -65,14 +76,10 @@ void Weekly_items::Date_Selected(const QDate &date){
         return;
     }
     else {			//need extra logic for deciding weeks
-        QDateTime old_day(cur_date);
-        old_day.setTimeSpec(Qt::UTC);
-        history.writeOut(old_day.toString().toStdString(),this->format_data_for_csv());
+        history.writeOut(QDate_To_Week(),this->format_data_for_csv());
 
         cur_date = date;
-        QDateTime current_day(date);
-        current_day.setTimeSpec(Qt::UTC);
-        this->Load(history.readIn(current_day.toString().toStdString()));
+        this->Load(history.readIn(QDate_To_Week()));
     }
 };
 

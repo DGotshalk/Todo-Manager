@@ -8,14 +8,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
     Daily_items_Connections();
-    current_day = new Daily_items;
-    current_day->push_back("finish weekly list");
-    current_week = new Weekly_items;
-    current_week->push_back("finish Todo app");
-    //ui->dailylistWidget->Load(*current_day);
-    //ui->weeklylistWidget->Load(*current_week);
+    QDate startdate = ui->calendarWidget->selectedDate();
+
+    ui->dailylistWidget->Start_Date(startdate);
+    std::cout <<"start date daily done" <<std::endl;
+    ui->weeklylistWidget->Start_Date(startdate);
+    std::cout <<"finished constructor" <<std::endl;
 }
 MainWindow::~MainWindow()
 {
@@ -70,22 +71,18 @@ void MainWindow::RemoveItemEnd(){
 }
 
 void MainWindow::Selected_Date(const QDate &date){
-    /* used for getting the day of the year (365) and the week number (1-52)
+    /* used for getting the day of the year (365) and the week number (1-52)*/
     std::cout << date.toString().toStdString() << std::endl;
     std::cout << "day: " << date.dayOfYear() << std::endl;
-    std::cout << "Week: " << date.weekNumber() << std::endl;
-    */
-    QDateTime current_day(date);
+    std::cout << "week: " << date.weekNumber() << std::endl;
+    std::cout << "year: " << date.year() << std::endl;
+
     if (date  == ui->dailylistWidget->getdate()){
         return;
     }
-    else {			//need extra logic for deciding weeks
-       // csvHandler.writeout(ui->dailylistWidget);
-       // csvHandler.read(ui->dailylistWidget);
+    else {
+        ui->dailylistWidget->Date_Selected(date);
+        ui->weeklylistWidget->Date_Selected(date);
     }
-
-    // can do this in the csv handler file
-    current_day.setTimeSpec(Qt::UTC);
-    std::cout << current_day.toString().toStdString() << std::endl;
 
 }

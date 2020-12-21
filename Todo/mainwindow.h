@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "daily_items.h"
 #include "weekly_items.h"
+#include "end_items.h"
 
 namespace Ui {
 class MainWindow;

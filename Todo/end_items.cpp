@@ -32,14 +32,30 @@ void End_items::push_back(QString details){
 };
 
 
-void End_items::Load(End_items &list){
+void End_items::Load(){
+    std::vector<std::pair<std::string,bool>> list = history.readIn("0");
     this->clear();
-    cur_parent = &list;
-    int total = list.count();
+    int total = list.size();
     for (int i =0; i < total; ++i){
-        this->addItem(list.takeItem(0));
+        QString details(list[i].first.c_str());
+        QListWidgetItem* newitem = new QListWidgetItem(details);
+        this->addItem(newitem);
+        newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled, Qt::ItemIsDragEnabled, Qt::ItemIsDragEnabled});
+        if (list[i].second){
+            newitem->setCheckState(Qt::Checked);
+        }
+        else{
+            newitem->setCheckState(Qt::Unchecked);
+        }
     }
 };
+
+/* Instead of a Date_Selected function I need a function that writes to the csv whenever
+ * Ive made a change to the items in the end list (updated an item, added an item, removed an item)
+ * the load funciton above should load all the items currently in the list
+ * and ill have to call it on startup
+ * note: the date for the end list is 0
+ */
 
 void End_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
     for (auto item: selecteditems){
