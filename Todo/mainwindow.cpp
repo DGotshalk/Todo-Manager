@@ -8,15 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
     ui->setupUi(this);
     Daily_items_Connections();
     QDate startdate = ui->calendarWidget->selectedDate();
-
     ui->dailylistWidget->Start_Date(startdate);
-    std::cout <<"start date daily done" <<std::endl;
     ui->weeklylistWidget->Start_Date(startdate);
-    std::cout <<"finished constructor" <<std::endl;
 }
 MainWindow::~MainWindow()
 {
@@ -71,12 +67,12 @@ void MainWindow::RemoveItemEnd(){
 }
 
 void MainWindow::Selected_Date(const QDate &date){
-    /* used for getting the day of the year (365) and the week number (1-52)*/
+    /* used for getting the day of the year (365) and the week number (1-52)
     std::cout << date.toString().toStdString() << std::endl;
     std::cout << "day: " << date.dayOfYear() << std::endl;
     std::cout << "week: " << date.weekNumber() << std::endl;
     std::cout << "year: " << date.year() << std::endl;
-
+*/
     if (date  == ui->dailylistWidget->getdate()){
         return;
     }

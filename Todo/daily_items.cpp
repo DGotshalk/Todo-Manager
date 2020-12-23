@@ -32,15 +32,15 @@ void Daily_items::push_back(QString details){
 };
 
 std::string Daily_items::QDate_To_Day(){
-    std::string day = std::to_string(cur_date.dayOfYear());
-    std::string year = std::to_string(cur_date.year());
-    return year+day;
+	std::string day = std::to_string(cur_date.dayOfYear());
+	std::string year = std::to_string(cur_date.year());
+	return year+day;
 }
 
 
 void Daily_items::Start_Date(const QDate &date){
    cur_date=date;
-    this->Load(history.readIn(QDate_To_Day()));
+	this->Load(history.readIn(QDate_To_Day()));
 }
 
 // Change load to take a vector<pair<String,bool>>, and add that item as well as the check state to the list
@@ -74,11 +74,11 @@ void Daily_items::Date_Selected(const QDate &date){
     if (date  == cur_date){
         return;
     }
-    else {
-        history.writeOut(QDate_To_Day(),format_data_for_csv());
+	else {
+		history.writeOut(QDate_To_Day(),format_data_for_csv());
         cur_date = date; 
 
-        Load(history.readIn(QDate_To_Day()));
+		Load(history.readIn(QDate_To_Day()));
     }
 };
 
@@ -98,6 +98,6 @@ std::vector<std::pair<std::string,bool>> Daily_items::format_data_for_csv(){
             checked = false;
         }
         listitems.push_back({information.toStdString(),checked});
-    }
+	}
     return listitems;
 };

@@ -70,4 +70,4 @@ on *NIX based machines such as Linux or Mac OSX
   - CSV file 
   - C++ parser 
 * Binary for release
->>>>>>> 3e2f51cf1854cc90a0dd32f5a0c1c659a03470b3
+

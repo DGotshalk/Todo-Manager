@@ -9,7 +9,7 @@
 #include <sstream>
 #include <utility>
 #include <algorithm>
-
+#include <QFile>
 
 // File inclusion
 #include "csvHandler.h"
@@ -27,7 +27,7 @@ csvHandler::csvHandler(){
 	csv_name = "sample.csv";
 }
 
-csvHandler::csvHandler(std::string filename){
+csvHandler::csvHandler(QString filename){
 	csv_name = filename;
 }
 
@@ -36,10 +36,10 @@ csvHandler::csvHandler(std::string filename){
  * send it back to the app in the form of a vector
 */
 std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
-        fstream infile(csv_name.c_str(), ios_base::in | ios_base::out);
-		std::vector<std::pair<std::string,bool>> db_vector;	
-        if (!infile){
-            infile.close();
+
+		QFile infile(csv_name);
+		std::vector<std::pair<std::string,bool>> db_vector;
+		if (!infile.open(QIODevice::ReadOnly | QIODevice::Text)){
 			return db_vector;
         }
         while (true){
@@ -61,12 +61,12 @@ std::vector<std::pair<std::string,bool>> csvHandler::readIn(std::string date){
 					std::pair<std::string, bool> newpair(task,checked);
 					db_vector.push_back(newpair);	
                 }
-                infile.close();
+				infile.close();
 				break;
 			}
-            else if (infile.eof()){
+			else if (infile.eof()){
 
-                infile.close();
+				infile.close();
 				break;
 			}
 			std::getline(infile,current_line_date);
@@ -83,22 +83,22 @@ void csvHandler::writeOut(std::string date, std::vector<std::pair<std::string,bo
 	//Processing input data		
 	//still need to handle semicolons and commas in my data 
 
-    std::string row;
+	std::string row;
 	row += date;
 	for (auto line: content){
 		std::replace(line.first.begin(),line.first.end(),',','\\');	
 		row+= ","+ line.first +","+ BooltoString(line.second);
 	}
-    row += "\n";
+	row += "\n";
 
 
-    fstream infile(csv_name.c_str(), ios_base::in | ios_base::out);
-    std::string newfile = "new_" + csv_name;
-    fstream outfile(newfile.c_str(), ios_base::out | ios_base::in);
+	fstream infile(csv_name.c_str(), ios_base::in | ios_base::out);
+	std::string newfile = "new_" + csv_name;
+	fstream outfile(newfile.c_str(), ios_base::out | ios_base::in);
 
 
-    bool written = false;
-    std::string current_line_date = "";
+	bool written = false;
+	std::string current_line_date = "";
 	std::getline(infile, current_line_date, ',');	
 		
 	if (infile.eof()){
@@ -134,10 +134,10 @@ void csvHandler::writeOut(std::string date, std::vector<std::pair<std::string,bo
 			std::string current_line_date = "";
 			std::getline(infile, current_line_date, ',');
 		}
-    }
+	}
 	infile.close();
-    outfile.close();
-    std::rename(newfile.c_str(), csv_name.c_str());
+	outfile.close();
+	std::rename(newfile.c_str(), csv_name.c_str());
 
 };
 
