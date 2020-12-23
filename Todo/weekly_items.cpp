@@ -32,9 +32,9 @@ void Weekly_items::push_back(QString details){
 };
 
 std::string Weekly_items::QDate_To_Week(){
-    std::string day = std::to_string(cur_date.weekNumber());
+    std::string week = std::to_string(cur_date.weekNumber());
     std::string year = std::to_string(cur_date.year());
-    return day +"_"+year;
+    return year+week;
 }
 
 
@@ -76,10 +76,10 @@ void Weekly_items::Date_Selected(const QDate &date){
         return;
     }
     else {			//need extra logic for deciding weeks
-        history.writeOut(QDate_To_Week(),this->format_data_for_csv());
+        history.writeOut(QDate_To_Week(),format_data_for_csv());
 
         cur_date = date;
-        this->Load(history.readIn(QDate_To_Week()));
+        Load(history.readIn(QDate_To_Week()));
     }
 };
 

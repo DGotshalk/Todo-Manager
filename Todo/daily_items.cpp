@@ -34,7 +34,7 @@ void Daily_items::push_back(QString details){
 std::string Daily_items::QDate_To_Day(){
     std::string day = std::to_string(cur_date.dayOfYear());
     std::string year = std::to_string(cur_date.year());
-    return day +"_"+year;
+    return year+day;
 }
 
 
@@ -75,9 +75,10 @@ void Daily_items::Date_Selected(const QDate &date){
         return;
     }
     else {
-        history.writeOut(QDate_To_Day(),this->format_data_for_csv());
+        history.writeOut(QDate_To_Day(),format_data_for_csv());
         cur_date = date; 
-        this->Load(history.readIn(QDate_To_Day()));
+
+        Load(history.readIn(QDate_To_Day()));
     }
 };
 
