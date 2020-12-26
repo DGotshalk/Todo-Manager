@@ -20,8 +20,8 @@ class csvHandler {
 	private:
 		QString csv_name;
 	public:
-		std::vector<std::pair<std::string,bool>> readIn(std::string date);
-		void writeOut(std::string date, std::vector<std::pair<std::string,bool>> content);	
+		std::vector<std::pair<QString, bool>> readIn(QString date);
+		void writeOut(QString date, std::vector<std::pair<QString, bool>> content);
 		csvHandler();
 		csvHandler(QString filename);
 };
