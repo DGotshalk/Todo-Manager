@@ -31,24 +31,24 @@ void Weekly_items::push_back(QString details){
     }
 };
 
-std::string Weekly_items::QDate_To_Week(){
-    std::string week = std::to_string(cur_date.weekNumber());
-    std::string year = std::to_string(cur_date.year());
-    return year+week;
+QString Weekly_items::QDate_To_Week(){
+	QString week = QString::number(cur_date.weekNumber());
+	QString year = QString::number(cur_date.year());
+	return year+week;
 }
 
 
 void Weekly_items::Start_Date(const QDate &date){
    cur_date=date;
-    this->Load(history.readIn(QDate_To_Week()));
+	this->Load(history.readIn(QDate_To_Week()));
 }
 
 // Change load to take a vector<pair<String,bool>>, and add that item as well as the check state to the list
-void Weekly_items::Load(std::vector<std::pair<std::string,bool>> list){
+void Weekly_items::Load(std::vector<std::pair<QString,bool>> list){
     this->clear();
     int total = list.size();
     for (int i =0; i < total; ++i){
-        QString details(list[i].first.c_str());
+		QString details(list[i].first);
         QListWidgetItem* newitem = new QListWidgetItem(details);
         this->addItem(newitem);
         newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled, Qt::ItemIsDragEnabled, Qt::ItemIsDragEnabled});
@@ -76,19 +76,19 @@ void Weekly_items::Date_Selected(const QDate &date){
         return;
     }
     else {			//need extra logic for deciding weeks
-        history.writeOut(QDate_To_Week(),format_data_for_csv());
+		history.writeOut(QDate_To_Week(),format_data_for_csv());
 
         cur_date = date;
-        Load(history.readIn(QDate_To_Week()));
+		Load(history.readIn(QDate_To_Week()));
     }
 };
 
-std::vector<std::pair<std::string,bool>> Weekly_items::format_data_for_csv(){
+std::vector<std::pair<QString,bool>> Weekly_items::format_data_for_csv(){
 //iterate through items in the current list
-//put them in to a std::vector<std::pair<std::string,bool>> vector;
+//put them in to a std::vector<std::pair<QString,bool>> vector;
 //return that vector
     int total = this->count();
-    std::vector<std::pair<std::string,bool>> listitems;
+	std::vector<std::pair<QString,bool>> listitems;
     for (int i=0; i < total; ++i){
         QString information = this->item(i)->text();
         bool checked;
@@ -98,7 +98,7 @@ std::vector<std::pair<std::string,bool>> Weekly_items::format_data_for_csv(){
         else{
             checked = false;
         }
-        listitems.push_back({information.toStdString(),checked});
+		listitems.push_back({information,checked});
     }
     return listitems;
 };

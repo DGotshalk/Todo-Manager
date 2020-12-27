@@ -25,7 +25,7 @@ bool End_items::check_repeat(QString name){
 void End_items::push_back(QString details){
     if (check_repeat(details)){
         QListWidgetItem* newitem = new QListWidgetItem(details);
-        this->addItem(newitem);
+		this->addItem(newitem);
         newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled, Qt::ItemIsDragEnabled, Qt::ItemIsDragEnabled});
         newitem->setCheckState(Qt::Unchecked);
     }
@@ -33,21 +33,21 @@ void End_items::push_back(QString details){
 
 
 void End_items::Load(){
-    std::vector<std::pair<std::string,bool>> list = history.readIn("0");
-    this->clear();
-    int total = list.size();
-    for (int i =0; i < total; ++i){
-        QString details(list[i].first.c_str());
-        QListWidgetItem* newitem = new QListWidgetItem(details);
-        this->addItem(newitem);
-        newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled, Qt::ItemIsDragEnabled, Qt::ItemIsDragEnabled});
-        if (list[i].second){
-            newitem->setCheckState(Qt::Checked);
-        }
-        else{
-            newitem->setCheckState(Qt::Unchecked);
-        }
-    }
+	std::vector<std::pair<QString,bool>> list = history.readIn("0");
+	this->clear();
+	int total = list.size();
+	for (int i =0; i < total; ++i){
+		QString details(list[i].first);
+		QListWidgetItem* newitem = new QListWidgetItem(details);
+		this->addItem(newitem);
+		newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled, Qt::ItemIsDragEnabled, Qt::ItemIsDragEnabled});
+		if (list[i].second){
+			newitem->setCheckState(Qt::Checked);
+		}
+		else{
+			newitem->setCheckState(Qt::Unchecked);
+		}
+	}
 };
 
 /* Instead of a Date_Selected function I need a function that writes to the csv whenever
@@ -65,12 +65,12 @@ void End_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
 };
 
 
-std::vector<std::pair<std::string,bool>> End_items::format_data_for_csv(){
+std::vector<std::pair<QString,bool>> End_items::format_data_for_csv(){
 //iterate through items in the current list
-//put them in to a std::vector<std::pair<std::string,bool>> vector;
+//put them in to a std::vector<std::pair<QString,bool>> vector;
 //return that vector
     int total = this->count();
-    std::vector<std::pair<std::string,bool>> listitems;
+	std::vector<std::pair<QString,bool>> listitems;
     for (int i=0; i < total; ++i){
         QString information = this->item(i)->text();
         bool checked;
@@ -80,7 +80,7 @@ std::vector<std::pair<std::string,bool>> End_items::format_data_for_csv(){
         else{
             checked = false;
         }
-        listitems.push_back({information.toStdString(),checked});
+		listitems.push_back({information,checked});
     }
     return listitems;
 };

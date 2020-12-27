@@ -5,14 +5,14 @@
 // Included Libraries 
 #include <cstddef>
 #include <cstdlib>
-#include <fstream>
 #include <iostream>
-#include <string>
-#include <QFile>
-#include <QString>
 #include <vector>
 #include <utility>
-
+#include <algorithm>
+#include <QFile>
+#include <QString>
+#include <QTextStream>
+#include <QCoreApplication>
 
 // This class is the main class for the backend
 

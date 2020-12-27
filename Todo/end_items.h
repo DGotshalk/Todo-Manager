@@ -7,25 +7,25 @@
 #include <QString>
 #include <iostream>
 #include <QDate>
-#include <string>
 #include "csvHandler.h"
+#include <utility>
 
 class End_items : public QListWidget
 {
     const End_items* cur_parent;
     Q_OBJECT
     csvHandler history;
-    std::vector<std::pair<std::string,bool>> format_data_for_csv();
+	std::vector<std::pair<QString,bool>> format_data_for_csv();
 
 public:
-    explicit End_items(QWidget *parent = nullptr): QListWidget(parent), history("end.csv") {
-       //put the loading here, we dont need dates for end_items
-    }
+	explicit End_items(QWidget *parent = nullptr): QListWidget(parent), history("end.csv") {
+	   //put the loading here, we dont need dates for end_items
+	}
     void push_back(QString detail);
     bool check_repeat(QString name);
     bool isempty();
-    void Load();
-    void Remove_Selected(QList<QListWidgetItem*> selecteditems);
+	void Load();
+	void Remove_Selected(QList<QListWidgetItem*> selecteditems);
 
 signals:
 
