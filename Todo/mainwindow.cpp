@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QDate startdate = ui->calendarWidget->selectedDate();
 	ui->dailylistWidget->Start_Date(startdate);
 	ui->weeklylistWidget->Start_Date(startdate);
+	ui->endlistWidget->Load();
 }
 MainWindow::~MainWindow()
 {
