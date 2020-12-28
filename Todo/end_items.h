@@ -30,7 +30,7 @@ public:
 signals:
 
 public slots:
-
+	void Item_Edited();
 };
 
 #endif // END_ITEMS_H

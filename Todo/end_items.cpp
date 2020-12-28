@@ -84,3 +84,8 @@ std::vector<std::pair<QString,bool>> End_items::format_data_for_csv(){
     }
     return listitems;
 };
+
+// SLOTS
+void End_items::Item_Edited(){
+	history.writeOut("0",format_data_for_csv());
+}

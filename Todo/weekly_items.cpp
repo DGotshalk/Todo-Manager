@@ -102,3 +102,8 @@ std::vector<std::pair<QString,bool>> Weekly_items::format_data_for_csv(){
     }
     return listitems;
 };
+
+// SLOTS
+void Weekly_items::Item_Edited(){
+	history.writeOut(QDate_To_Week(),format_data_for_csv());
+}

@@ -42,15 +42,16 @@ std::vector<std::pair<QString ,bool>> csvHandler::readIn(QString date){
 					std::pair<QString, bool> newpair(task,checked);
 					db_vector.push_back(newpair);
 				}
+
 				infile.close();
 				break;
 			}
-			else if (infile.atEnd()){
-
+			else if (in.atEnd()){
 				infile.close();
 				break;
 			}	
 		}
+
 		return db_vector;
 };
 
@@ -59,7 +60,7 @@ std::vector<std::pair<QString ,bool>> csvHandler::readIn(QString date){
  * then pick a time to write the new data into the file
  * write the rest of the file out, rename the new file to the name of the old file
 */
-void csvHandler::writeOut(QString date, std::vector<std::pair<QString,bool>> content){
+void csvHandler::writeOut(QString date, std::vector<std::pair<QString,bool>> content){	
 	QString row;
 	row += date;
 	for (auto line: content){	
@@ -78,8 +79,6 @@ void csvHandler::writeOut(QString date, std::vector<std::pair<QString,bool>> con
 		std::cout <<newfile.toStdString()<< "failed to open outfile" << std::endl;
 		return;
 	}
-
-
 	/*
 	 * NOT WRITING OUT CORRECTLY DAYS CORRECTLY
 	 */
@@ -89,34 +88,43 @@ void csvHandler::writeOut(QString date, std::vector<std::pair<QString,bool>> con
 	QStringList current_line_data = {""};
 	current_line_data = in.readLine().split(',');
 	QString current_line_date = current_line_data[0];
-	if (infile.atEnd()){
-		outfile << row;
+	if (in.atEnd()){
+		if (date.toInt() > current_line_date.toInt()){
+			outfile << row;
+			QString rest_of_line = current_line_data.join(",");
+			outfile << rest_of_line + "\n";
+		}
+		else{
+			QString rest_of_line = current_line_data.join(",");
+			outfile << rest_of_line + "\n";
+			outfile << row;
+		}
 	}
 	else if (current_line_date ==""){
 		outfile << row;
 	}
 	else{
-        while (true){
-			if (infile.atEnd()){
+		while (true){			
+			if (in.atEnd()){
+				QString rest_of_line = current_line_data.join(",");
+				outfile << rest_of_line + "\n";
+				outfile << row;
 				break;
 			}	
-			if (date == current_line_date){
+			else if (date == current_line_date){
 				outfile << row;
-
 				QString rest_of_line;
 				written = true;
 			}
 			else if (date.toInt() > current_line_date.toInt() && written == false){
 				outfile << row;
-				current_line_data[0] = "";
-				QString rest_of_line = current_line_data.join("");
-				outfile << current_line_date + "," + rest_of_line + "\n";
+				QString rest_of_line = current_line_data.join(",");
+				outfile << rest_of_line + "\n";
 				written = true;
 			}
-			else {
-				current_line_data[0] = "";
-				QString rest_of_line = current_line_data.join("");
-				outfile << current_line_date + "," + rest_of_line + "\n";
+			else {	
+				QString rest_of_line = current_line_data.join(",");
+				outfile << rest_of_line + "\n";
 			}
 			current_line_date = "";
 			current_line_data = in.readLine().split(',');
@@ -127,5 +135,6 @@ void csvHandler::writeOut(QString date, std::vector<std::pair<QString,bool>> con
 	infile.remove();
 	out.close();
 	out.rename(QCoreApplication::applicationDirPath() + "/"+csv_name);
+
 };
 

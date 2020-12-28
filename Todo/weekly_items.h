@@ -34,7 +34,7 @@ class Weekly_items : public QListWidget
 signals:
 
 public slots:
-
+	void Item_Edited();
 };
 
 #endif // WEEKLY_ITEMS_H

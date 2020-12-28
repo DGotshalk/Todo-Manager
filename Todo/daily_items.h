@@ -19,7 +19,7 @@ class Daily_items : public QListWidget
     QDate cur_date;
     Q_OBJECT
     csvHandler history;
-	   std::vector<std::pair<QString,bool>> format_data_for_csv();
+	std::vector<std::pair<QString,bool>> format_data_for_csv();
 	bool isempty();
 	bool check_repeat(QString name);
 	void Load(std::vector<std::pair<QString,bool>> list);
@@ -36,7 +36,7 @@ class Daily_items : public QListWidget
 signals:
 
 public slots:
-
+	void Item_Edited();
 };
 
 #endif // DAILY_ITEMS_H
