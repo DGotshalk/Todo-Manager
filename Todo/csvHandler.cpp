@@ -89,7 +89,7 @@ void csvHandler::writeOut(QString date, std::vector<std::pair<QString,bool>> con
 	current_line_data = in.readLine().split(',');
 	QString current_line_date = current_line_data[0];
 	if (in.atEnd()){
-		if (date.toInt() > current_line_date.toInt()){
+		if (date.toFloat() > current_line_date.toFloat()){
 			outfile << row;
 			QString rest_of_line = current_line_data.join(",");
 			outfile << rest_of_line + "\n";
@@ -105,24 +105,35 @@ void csvHandler::writeOut(QString date, std::vector<std::pair<QString,bool>> con
 	}
 	else{
 		while (true){			
-			if (in.atEnd()){
-				QString rest_of_line = current_line_data.join(",");
-				outfile << rest_of_line + "\n";
-				outfile << row;
+			if (in.atEnd() || current_line_date == ""){
+				if (written == true){
+					QString rest_of_line = current_line_data.join(",");
+					outfile << rest_of_line + "\n";
+				}
+
+				else if (date.toFloat() > current_line_date.toFloat() && written == false){
+					outfile << row;
+					QString rest_of_line = current_line_data.join(",");
+					outfile << rest_of_line + "\n";
+				}
+				else {
+					QString rest_of_line = current_line_data.join(",");
+					outfile << rest_of_line + "\n";
+					outfile << row;
+				}
 				break;
 			}	
 			else if (date == current_line_date){
 				outfile << row;
-				QString rest_of_line;
 				written = true;
 			}
-			else if (date.toInt() > current_line_date.toInt() && written == false){
+			else if (date.toFloat() > current_line_date.toFloat() && written == false){
 				outfile << row;
 				QString rest_of_line = current_line_data.join(",");
 				outfile << rest_of_line + "\n";
 				written = true;
 			}
-			else {	
+			else {
 				QString rest_of_line = current_line_data.join(",");
 				outfile << rest_of_line + "\n";
 			}
