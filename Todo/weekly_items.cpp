@@ -34,7 +34,10 @@ void Weekly_items::push_back(QString details){
 QString Weekly_items::QDate_To_Week(){
 	QString week = QString::number(cur_date.weekNumber());
 	QString year = QString::number(cur_date.year());
-	return year+"."+week;
+	if (cur_date.weekNumber() < 10)
+		return year+".0"+week;
+	else 
+		return year+"."+week;
 }
 
 
