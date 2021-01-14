@@ -75,7 +75,15 @@ void Weekly_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
 // and then load the date is has changed to from the csv into the list using Load()
 // change the format of the date here to be in weeks instead of the daaay
 void Weekly_items::Date_Selected(const QDate &date){ 
-    if (date  == cur_date){
+	QString actual_date;	
+	QString week = QString::number(date.weekNumber());
+	QString year = QString::number(date.year());
+	if (cur_date.weekNumber() < 10)
+		 actual_date= year+".0"+week;
+	else 
+		actual_date = year+"."+week;
+    
+	if (actual_date  ==	QDate_To_Week() ){
         return;
     }
     else {			//need extra logic for deciding weeks

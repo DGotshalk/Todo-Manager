@@ -24,6 +24,12 @@ MainWindow::~MainWindow()
 // have to make it so that whenver an item is added, or removed, or edited
 // in the end list, it gets written out to that list
 
+/* Is it possible to do a check to see if the items on the list have been changed? For example, if i click a new date, but since ive already edited an item, do i really
+ * need to write out the file again? its already been written? That sounds like it would have to be
+ *
+ *
+ */
+
 void MainWindow::Daily_items_Connections(){
     //Buttons
     QObject::connect(ui->addtodailylistButton,SIGNAL(clicked()),this, SLOT(AddItemDaily()));
