@@ -25,9 +25,9 @@ bool End_items::check_repeat(QString name){
 void End_items::push_back(QString details){
     if (check_repeat(details)){
         QListWidgetItem* newitem = new QListWidgetItem(details);
+		newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled, Qt::ItemIsDragEnabled, Qt::ItemIsDragEnabled});
+		newitem->setCheckState(Qt::Unchecked);
 		this->addItem(newitem);
-        newitem->setFlags({Qt::ItemIsUserCheckable, Qt::ItemIsSelectable, Qt::ItemIsEditable, Qt::ItemIsEnabled, Qt::ItemIsDragEnabled, Qt::ItemIsDragEnabled});
-        newitem->setCheckState(Qt::Unchecked);
     }
 };
 
