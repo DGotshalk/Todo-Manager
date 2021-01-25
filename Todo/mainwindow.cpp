@@ -35,7 +35,6 @@ void MainWindow::Daily_items_Connections(){
     QObject::connect(ui->addtodailylistButton,SIGNAL(clicked()),this, SLOT(AddItemDaily()));
     QObject::connect(ui->removefromdailylistButton,SIGNAL(clicked()),this, SLOT(RemoveItemDaily()));
 	QObject::connect(ui->removefromdailylistButton,SIGNAL(clicked()),ui->dailylistWidget, SLOT(Item_Edited()));
-
 	QObject::connect(ui->addtoweeklistButton,SIGNAL(clicked()),this, SLOT(AddItemWeekly()));
     QObject::connect(ui->removefromweeklistButton,SIGNAL(clicked()),this, SLOT(RemoveItemWeekly()));
 	QObject::connect(ui->removefromweeklistButton,SIGNAL(clicked()),ui->weeklylistWidget, SLOT(Item_Edited()));
@@ -48,12 +47,21 @@ void MainWindow::Daily_items_Connections(){
     QObject::connect(ui->calendarWidget,SIGNAL(clicked(const QDate&)),this,SLOT(Selected_Date(const QDate&)));
 
 	QObject::connect(ui->dailylistWidget,SIGNAL(itemChanged(QListWidgetItem*)),ui->dailylistWidget,SLOT(Item_Edited()));
+	//QObject::connect(ui->dailylistWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(ItemClickedLogic(QListWidgetItem *)));
 	QObject::connect(ui->weeklylistWidget,SIGNAL(itemChanged(QListWidgetItem*)),ui->weeklylistWidget,SLOT(Item_Edited()));
 	QObject::connect(ui->endlistWidget,SIGNAL(itemChanged(QListWidgetItem*)),ui->endlistWidget,SLOT(Item_Edited()));
 }
 
 
 
+
+
+void MainWindow::ItemClickedLogic(QListWidgetItem *item){
+	std::cout <<"clicked"<<std::endl;
+	//https://www.qtcentre.org/threads/17610-QListWidget-Deselect
+
+	return;
+}
 void MainWindow::AddItemDaily(){
 	ui->dailylistWidget->push_back("new item");
 	ui->dailylistWidget->editItem(ui->dailylistWidget->item(ui->dailylistWidget->count()-1));
