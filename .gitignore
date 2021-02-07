@@ -2,5 +2,8 @@
 build-Todo-Desktop-Debug/
 current_elements
 Todo/.qmake.stash
+backend
+Todo/.ycm_extra_conf.py
+Todo/compile_commands.json
 *~
 .*~

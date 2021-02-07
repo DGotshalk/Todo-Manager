@@ -86,10 +86,10 @@ void Weekly_items::Date_Selected(const QDate &date){
 	if (actual_date  ==	QDate_To_Week() ){
         return;
     }
-    else {			//need extra logic for deciding weeks
+	else {
 		history.writeOut(QDate_To_Week(),format_data_for_csv());
-
-        cur_date = date;
+		previousSelection = NULL;
+		cur_date = date;
 		Load(history.readIn(QDate_To_Week()));
     }
 };

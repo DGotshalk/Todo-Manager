@@ -76,9 +76,9 @@ void Daily_items::Date_Selected(const QDate &date){
         return;
     }
 	else {
+		previousSelection = NULL;
 		history.writeOut(QDate_To_Day(),format_data_for_csv());
         cur_date = date; 
-
 		Load(history.readIn(QDate_To_Day()));
     }
 };
@@ -127,8 +127,8 @@ void Daily_items::listItemClicked(QListWidgetItem *item){
 
 void Daily_items::mousePressEvent(QMouseEvent *event){
 	if (this->QListWidget::itemAt(event->pos())){
-		this->QListWidget::mousePressEvent(event);
-		return;	
+		this->QListWidget::mousePressEvent(event);	
+		return;
 	}
 	else{
 		this->clearSelection();
