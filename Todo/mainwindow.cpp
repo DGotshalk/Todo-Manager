@@ -44,9 +44,9 @@ void MainWindow::Daily_items_Connections(){
     QObject::connect(ui->removefromendlistButton,SIGNAL(clicked()),this, SLOT(RemoveItemEnd()));
 	QObject::connect(ui->removefromendlistButton,SIGNAL(clicked()),ui->endlistWidget, SLOT(Item_Edited()));
 
-	QObject::connect(ui->dailylistWidget,SIGNAL(itemClicked(QListWidgetItem*)),ui->dailylistWidget,SLOT(listItemClicked(QListWidgetItem *)));
-	QObject::connect(ui->weeklylistWidget,SIGNAL(itemClicked(QListWidgetItem*)),ui->weeklylistWidget,SLOT(listItemClicked(QListWidgetItem *)));
-	QObject::connect(ui->endlistWidget,SIGNAL(itemClicked(QListWidgetItem*)),ui->endlistWidget,SLOT(listItemClicked(QListWidgetItem *)));
+	QObject::connect(ui->dailylistWidget,SIGNAL(itemPressed(QListWidgetItem*)),ui->dailylistWidget,SLOT(listItemClicked(QListWidgetItem *)));
+	QObject::connect(ui->weeklylistWidget,SIGNAL(itemPressed(QListWidgetItem*)),ui->weeklylistWidget,SLOT(listItemClicked(QListWidgetItem *)));
+	QObject::connect(ui->endlistWidget,SIGNAL(itemPressed(QListWidgetItem*)),ui->endlistWidget,SLOT(listItemClicked(QListWidgetItem *)));
 
 	//change the selected date function from being inside this class to being inside the other classes. I want to pass the info appropriatly
     QObject::connect(ui->calendarWidget,SIGNAL(clicked(const QDate&)),this,SLOT(Selected_Date(const QDate&)));

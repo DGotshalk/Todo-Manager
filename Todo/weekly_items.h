@@ -9,20 +9,24 @@
 #include <QDate>
 #include "csvHandler.h"
 #include <utility>
+#include <algorithm>
+#include <QCheckBox>
+#include <QCoreApplication>
+#include <QMouseEvent>
 
 class Weekly_items : public QListWidget
-{
-    const Weekly_items* cur_parent;
-
-    QDate cur_date;
-    Q_OBJECT
-    csvHandler history;
-	std::vector<std::pair<QString,bool>> format_data_for_csv();
-	bool check_repeat(QString name);
-	bool isempty();
-	void Load(std::vector<std::pair<QString,bool>> list);
-	QString QDate_To_Week();
-	QListWidgetItem *previousSelection = NULL;
+	{
+	private:
+		const Weekly_items* cur_parent;
+		QDate cur_date;
+		Q_OBJECT
+		csvHandler history;
+		std::vector<std::pair<QString,bool>> format_data_for_csv();
+		bool check_repeat(QString name);
+		bool isempty();
+		void Load(std::vector<std::pair<QString,bool>> list);
+		QString QDate_To_Week();
+		QListWidgetItem *previousSelection = NULL;
 	
 	public:
 		explicit Weekly_items(QWidget *parent = nullptr): QListWidget(parent), history("weekly.csv") {}
@@ -32,11 +36,13 @@ class Weekly_items : public QListWidget
 		void Remove_Selected(QList<QListWidgetItem*> selecteditems);
 		void Start_Date(const QDate & date);
 
-signals:
+	signals:
 
-public slots:
-	void Item_Edited();
-	void listItemClicked(QListWidgetItem *item);
+	public slots:
+		void Item_Edited();
+		void listItemClicked(QListWidgetItem *item);
+	protected:
+		void mousePressEvent(QMouseEvent *event) override;
 };
 
 #endif // WEEKLY_ITEMS_H

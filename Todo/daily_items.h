@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <QCheckBox>
 #include <QCoreApplication>
+#include <QMouseEvent>
 class Daily_items : public QListWidget
 {
     const Daily_items* cur_parent;
@@ -33,11 +34,13 @@ class Daily_items : public QListWidget
 		void Remove_Selected(QList<QListWidgetItem*> selecteditems);
 		void Start_Date(const QDate & date);
 
-signals:
+	signals:
 
-public slots:
-	void Item_Edited();
-	void listItemClicked(QListWidgetItem *item);
+	public slots:
+		void Item_Edited();
+		void listItemClicked(QListWidgetItem *item);
+	protected:
+		void mousePressEvent(QMouseEvent *event) override;
 };
 
 #endif // DAILY_ITEMS_H

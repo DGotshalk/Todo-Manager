@@ -130,3 +130,15 @@ void Weekly_items::listItemClicked(QListWidgetItem *item){
 	}
 	previousSelection = item;
 }
+
+void Weekly_items::mousePressEvent(QMouseEvent *event){
+	if (this->QListWidget::itemAt(event->pos())){
+		this->QListWidget::mousePressEvent(event);
+		return;
+	}
+	else{
+		this->clearSelection();
+		this->clearFocus();
+		return;
+	}
+}
