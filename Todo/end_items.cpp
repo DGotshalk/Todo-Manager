@@ -89,3 +89,14 @@ std::vector<std::pair<QString,bool>> End_items::format_data_for_csv(){
 void End_items::Item_Edited(){
 	history.writeOut("0",format_data_for_csv());
 }
+void End_items::listItemClicked(QListWidgetItem *item){
+	if ( previousSelection != NULL ) {
+	  if ( item->text() == previousSelection->text() )  {
+		previousSelection = NULL;
+		this->clearSelection();
+		this->clearFocus();
+		return;
+	  }
+	}
+	previousSelection = item;
+}

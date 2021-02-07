@@ -118,3 +118,15 @@ std::vector<std::pair<QString,bool>> Weekly_items::format_data_for_csv(){
 void Weekly_items::Item_Edited(){
 	history.writeOut(QDate_To_Week(),format_data_for_csv());
 }
+
+void Weekly_items::listItemClicked(QListWidgetItem *item){
+	if ( previousSelection != NULL ) {
+	  if ( item->text() == previousSelection->text() )  {
+		previousSelection = NULL;
+		this->clearSelection();
+		this->clearFocus();
+		return;
+	  }
+	}
+	previousSelection = item;
+}

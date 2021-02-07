@@ -28,7 +28,7 @@ std::vector<std::pair<QString ,bool>> csvHandler::readIn(QString date){
 		if (!infile.open(QIODevice::ReadWrite | QIODevice::Text)){
 			std::cout << csv_name.toStdString()<<"Reading in file that does not open" << std::endl;
 			return db_vector;
-		}
+		}	
 		QTextStream in(&infile);
         while (true){
 			QStringList current_line_data = {""};

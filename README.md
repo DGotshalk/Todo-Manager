@@ -63,11 +63,9 @@ After building the program can be run with </br>
 on *NIX based machines such as Linux or Mac OSX
 
 ## In development:
+* Fix Item Selection
 * Colorscheme adjustments
 * Daily Task Rollover
 * Percentage tasks completed
-* Back-end 
-  - CSV file 
-  - C++ parser 
 * Binary for release
 

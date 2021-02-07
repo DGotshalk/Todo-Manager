@@ -22,7 +22,8 @@ class Weekly_items : public QListWidget
 	bool isempty();
 	void Load(std::vector<std::pair<QString,bool>> list);
 	QString QDate_To_Week();
-
+	QListWidgetItem *previousSelection = NULL;
+	
 	public:
 		explicit Weekly_items(QWidget *parent = nullptr): QListWidget(parent), history("weekly.csv") {}
 		QDate getdate(){ return cur_date;}
@@ -35,6 +36,7 @@ signals:
 
 public slots:
 	void Item_Edited();
+	void listItemClicked(QListWidgetItem *item);
 };
 
 #endif // WEEKLY_ITEMS_H

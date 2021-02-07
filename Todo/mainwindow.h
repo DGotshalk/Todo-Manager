@@ -26,8 +26,6 @@ private slots:
     void AddItemEnd();
     void RemoveItemEnd();
     void Selected_Date(const QDate &date);
-//	void ItemSelection(QListWidgetItem *item);
-	void ItemClickedLogic(QListWidgetItem *item);
 private:
     Ui::MainWindow *ui;
     Daily_items *current_day;

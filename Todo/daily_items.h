@@ -24,7 +24,7 @@ class Daily_items : public QListWidget
 	bool check_repeat(QString name);
 	void Load(std::vector<std::pair<QString,bool>> list);
 	QString QDate_To_Day();
-
+	QListWidgetItem *previousSelection = NULL;
 	public:
 		explicit Daily_items(QWidget *parent = nullptr): QListWidget(parent), history("daily.csv") {}
 		QDate getdate(){ return cur_date;}
@@ -37,6 +37,7 @@ signals:
 
 public slots:
 	void Item_Edited();
+	void listItemClicked(QListWidgetItem *item);
 };
 
 #endif // DAILY_ITEMS_H
