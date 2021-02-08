@@ -60,7 +60,10 @@ void End_items::Load(){
 void End_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
     for (auto item: selecteditems){
        int row = this->row(item);
-       delete this->takeItem(row);
+	   if(previousSelection == item){
+		  previousSelection = NULL;
+	   }
+	   delete this->takeItem(row);
     }
 };
 
@@ -91,7 +94,7 @@ void End_items::Item_Edited(){
 }
 void End_items::listItemClicked(QListWidgetItem *item){
 	if ( previousSelection != NULL ) {
-	  if ( item->text() == previousSelection->text() )  {
+	  if ( item == previousSelection)  {
 		previousSelection = NULL;
 		this->clearSelection();
 		this->clearFocus();

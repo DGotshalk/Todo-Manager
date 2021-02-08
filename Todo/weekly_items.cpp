@@ -66,7 +66,10 @@ void Weekly_items::Load(std::vector<std::pair<QString,bool>> list){
 
 void Weekly_items::Remove_Selected(QList<QListWidgetItem*> selecteditems){
     for (auto item: selecteditems){
-       int row = this->row(item);
+	   int row = this->row(item);
+	   if(previousSelection == item){
+		  previousSelection = NULL;
+	   }
        delete this->takeItem(row);
     }
 };
@@ -121,7 +124,7 @@ void Weekly_items::Item_Edited(){
 
 void Weekly_items::listItemClicked(QListWidgetItem *item){
 	if ( previousSelection != NULL ) {
-	  if ( item->text() == previousSelection->text() )  {
+	  if ( item == previousSelection )  {
 		previousSelection = NULL;
 		this->clearSelection();
 		this->clearFocus();
